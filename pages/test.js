@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
         }
     }
     /*category: "random"
-    date: "13/2/2021"
+    date: "13/2/2021"sdfsdf
     description: "sffff"
     title: "test22FFFFF"xcvxcvxcv
     _id: "602836e83431205183e04a74"*/
