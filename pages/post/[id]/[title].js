@@ -1,5 +1,4 @@
-import Head from 'next/head'
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import {
     Editor, EditorState,
     RichUtils,
@@ -13,36 +12,45 @@ import {
     DraftEditorCommand,
 } from "draft-js";
 
-import editorStyles from "../styles/editorStyles";
+import editorStyles from "../../../styles/editorStyles";
+
+import customStylemap from "../../../EditorStyles/CustomStyleMap";
 import styled from "styled-components";
-import customStylemap from "../EditorStyles/CustomStyleMap"
+import {
+    YOUTUBE_PREFIX,
+    VIMEO_PREFIX,
+    YOUTUBEMATCH_URL,
+    VIMEOMATCH_URL
+} from "../../../utils/media-players-regex";
+export async function getStaticPaths() {
 
-export async function getServerSideProps(context) {
-    const res = await fetch(`http://localhost:5000/post/608970b75a6b8f3e9f16dcb7/qwerty`)
+    const res = await fetch(`https://quiet-peak-00993.herokuapp.com/test`)
     const data = await res.json()
+    console.log('data', data)
+    const paths = data.data.map((post, id) => {
 
-
-    if (!data) {
         return {
-            notFound: true,
+            params: { id: post._id.toString(), title: post.title },
         }
-    }
-    /*category: "random"
-    date: "13/2/2021"sdfsdf
-    description: "sffff"
-    title: "test22FFFFF"xcvxcvxcv
-    _id: "602836e83431205183e04a74"*/
+    })
+    console.log('PATHS', paths)
+    return { paths, fallback: false }
 
-    console.log('CONVERTED', data)
 
-    return {
-        props: { data }, // will be passed to the page component as props
-    }
 }
-const Test = (data) => {
-    console.log('data', data.data.data)
-    let convertedContent = convertFromRaw(data.data.data.post.convertedContent)
 
+export async function getStaticProps({ params }) {
+    // params contains the post `id`.
+    // If the route is like /posts/1, then params.id is 1
+    const res = await fetch(`https://quiet-peak-00993.herokuapp.com/post/${params.id}/${params.title}`)
+    const posts = await res.json()
+
+    // Pass post data to the page via props
+    return { props: { posts } }
+}
+
+const Post = (data) => {
+    let convertedContent = convertFromRaw(data.posts.data.convertedContent)
     const link = (props) => {
         const { url } = props.contentState.getEntity(props.entityKey).getData();
         return <a href={url}>{props.children}</a>;
@@ -84,10 +92,6 @@ const Test = (data) => {
         setEditorState(editorState);
     }
 
-    const YOUTUBE_PREFIX = "https://www.youtube.com/embed/";
-    const VIMEO_PREFIX = "https://player.vimeo.com/video/";
-    const YOUTUBEMATCH_URL = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-    const VIMEOMATCH_URL = /https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/;
 
     const getSrc = ({ src }) => {
         const isYoutube = (url) => YOUTUBEMATCH_URL.test(url);
@@ -172,32 +176,28 @@ const Test = (data) => {
             media = <Video src={src} crossorigin="anonymous" />;
         }
         return media;
+
     };
 
-    return (
-        <div>
-            <Head>
-                <div>sdfsdf</div>
-            </Head>
-            <Wrapper className="IM HERE">
+    return (<div>
 
-                <EditorWrapper className="EDITORWRAPPER" >
-                    <Editor
-                        blockRendererFn={mediaBlockRender}
-                        customStyleMap={customStylemap}
-                        editorState={editorState}
-                        onChange={onChange}
-                        readOnly={true}
-                    ></Editor>
-                </EditorWrapper>
+        <Wrapper className="IM HERE">
+
+            <EditorWrapper className="EDITORWRAPPER" >
+                <Editor
+                    blockRendererFn={mediaBlockRender}
+                    customStyleMap={customStylemap}
+                    editorState={editorState}
+                    onChange={onChange}
+                    readOnly={true}
+                ></Editor>
+            </EditorWrapper>
 
 
-            </Wrapper>
-        </div>
-    )
+
+        </Wrapper>
+    </div>)
 }
-
-
 const Wrapper = styled.div`
 min-height:100vh;
  display: flex;
@@ -223,4 +223,4 @@ hyphens:auto;
   }
 `;
 
-export default Test
+export default Post
