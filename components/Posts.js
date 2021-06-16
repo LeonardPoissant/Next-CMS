@@ -12,12 +12,6 @@ const Posts = (props) => {
 
     let posts = props.posts.data;
 
-
-
-    const codingThumbnail = "/coding.png";
-    const randomThumbnail = "/random.png";
-    const defaultThumbnail = "/default.png"
-
     return (
         <Wrapper className="HERE?">
             {posts[0] != undefined ? posts.map((post, index) => (
@@ -38,12 +32,19 @@ const Posts = (props) => {
 export default Posts;
 
 const Wrapper = styled.main`
+z-index: -1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     min-height: 60vh;
 padding:30px;
+@media only screen and (max-width: 667px) {
+
+width:500px;
+
+}
+
 
 `;
 

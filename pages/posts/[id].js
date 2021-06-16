@@ -10,7 +10,7 @@ const PostPage = ({ posts }) => {
 
     return (
         <><Posts posts={posts}></Posts>
-            <SubNav />
+
         </>)
 }
 

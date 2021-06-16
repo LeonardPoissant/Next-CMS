@@ -23,7 +23,10 @@ const BlogPostBanner = (props) => {
 
   return (
 
-    <Link href={{
+
+
+
+    <StyledLink href={{
       pathname: '/post/[id]/[title]',
       query: {
         id: props.id,
@@ -47,14 +50,23 @@ const BlogPostBanner = (props) => {
         </DetailsContainer>
 
       </Wrapper>
-    </Link>)
+    </StyledLink>
+
+  )
 };
 
 export default BlogPostBanner;
 
 
 
+
+const StyledLink = styled(Link)`
+
+
+`
 const Wrapper = styled.div`
+
+
 display:flex;
 justify-content:flex-start;
 align-items:center;
@@ -91,6 +103,12 @@ z-index:1;
     transition: font-size 1s;
     font-size: 2rem;
   }
+  @media only screen and (max-width: 667px) {
+
+    width:500px;
+    padding:19px;
+
+}
   
 
 `;

@@ -4,88 +4,52 @@
 
 
 import styled from "styled-components"
-
+import Link from 'next/link'
+import HomeNav from "./Home-nav-icon"
+import BlogIcon from "./Blog-pages-nav-icon"
 
 const SubNav = (props) => {
+    const isOpen = props.isOpen
+    const openSubNav = props.openSubNav
 
-    console.log('propsSUBNAV', props)
-    /*useEffect(() => {
-        fetch(`/posts`)
-            .then((res) => res.json())
-            .then((data) => {
-                setArrayOfPages(data.data)
-            })
-    }, []);*/
 
-    /* useEffect(() => {
-         history.push(`/Posts/${page}`)
-     }, [page]);*/
-
-    /*const handleNextPage = () => {
-        if (arrayOfPages.length > page) {
-            setPage(page + 1)
-        }
-    };*/
-    /* const handlePreviousPage = () => {
-         if (page > 1) {
-             setPage(page - 1)
-         }
-     };*/
-
-    /*const handleGoToPage = (page) => {
-        setPage(page)
-        history.push(`/Posts/${page}`)
-    }*/
-
-    //  <Arrow src={LeftArrow} onClick={handlePreviousPage} text={"Previous"} />
-
-    // <Arrow src={RightArrow} onClick={handleNextPage} text={"Next"} />
 
     return (
-        <Wrapper >
+        <>
+            {isOpen ? <Wrapper>
 
-            <Arrow  > {"<="}</Arrow>
-
-
-
-
+                <HomeNav openSubNav={openSubNav} />
+                <BlogIcon openSubNav={openSubNav} />
 
 
-            <Arrow  > {"=>"}</Arrow>
 
+            </Wrapper> : <></>}
 
-        </Wrapper>
+        </>
     )
 }
 
 export default SubNav
 
 const Wrapper = styled.div`
+z-index: 3;
+position: absolute;
 
-width:200px;
-display:flex;
-justify-content:center;
-min-height:50px;
+margin-left: 100px;
 
+/*border: solid;
+border-radius: 50%;
+width: 50px;
+height: 50px;
+text-align: center;
+    
+    :hover{
+    background-color: azure;
+}*/
 
-background: linear-gradient(to right,
-    #ff4b1f,
-    #1fddff)
-;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-
-
-
-
-`;
-
-const Arrow = styled.div`
-padding-top:10px;
-
-cursor:pointer;
+`
 
 
-`;
+
+
 
