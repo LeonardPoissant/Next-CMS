@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import SubNav from "./SubNav"
+import SubNav from "./subNav"
 import { useState } from "react"
 
 
