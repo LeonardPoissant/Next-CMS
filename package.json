@@ -20,5 +20,9 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "latest"
-  }
+  },
+  "cacheDirectories": [
+    "node_modules/",
+    ".next/cache/"
+  ]
 }
