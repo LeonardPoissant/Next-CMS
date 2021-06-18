@@ -13,6 +13,7 @@ export default function Home() {
         <meta property="og:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="og:title" content="Sharely" />
         <meta property="og:description" content="Sharely, how BBBBBsharing is meant to be" />
+        <meta property="og:image" content="https://yearngroup.herokuapp.com/public/random.png" />
         <meta property="og:image:secure_url" content="https://yearngroup.herokuapp.com/public/random.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="400" />
