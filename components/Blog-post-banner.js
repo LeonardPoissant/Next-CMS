@@ -13,7 +13,7 @@ const BlogPostBanner = (props) => {
   const [thumbnailCategory, setThumbnailCategory] = useState("")
 
   const codingThumbnail = "/coding.png";
-  const randomThumbnail = "/random.png";
+  const randomThumbnail = "/random.jpg";
   const defaultThumbnail = "/default.png"
 
   useEffect(() => {

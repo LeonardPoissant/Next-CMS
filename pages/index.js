@@ -13,16 +13,16 @@ export default function Home() {
         <meta property="og:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="og:title" content="Sharely" />
         <meta property="og:description" content="Sharely, how BBBBBsharing is meant to be" />
-        <meta property="og:image" content="https://yearngroup.herokuapp.com/public/random.png" />
-        <meta property="og:image:secure_url" content="https://yearngroup.herokuapp.com/public/random.png" />
-        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image" content="https://yearngroup.herokuapp.com/public/random.jpg" />
+        <meta property="og:image:secure_url" content="https://yearngroup.herokuapp.com/public/random.jpg" />
+        <meta property="og:image:type" content="image/jpg" />
         <meta property="og:image:width" content="400" />
         <meta property="og:image:height" content="300" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="twitter:title" content="Sharely" />
         <meta property="twitter:description" content="Sharely, how  AAAAAsharing is meant to be" />
-        <meta property="twitter:image" content="https://yearngroup.herokuapp.com/public/random.png"></meta>
+        <meta property="twitter:image" content="https://yearngroup.herokuapp.com/public/random.jpg"></meta>
 
       </Head>
 
