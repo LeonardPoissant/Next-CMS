@@ -5,8 +5,8 @@
 
 import styled from "styled-components"
 import Link from 'next/link'
-import HomeNav from "./home-nav-icon"
-import BlogIcon from "./blog-pages-nav-icon"
+import HomeNav from "./Home-nav-icon"
+import BlogIcon from "./Blog-pages-nav-icon"
 
 const SubNav = (props) => {
     const isOpen = props.isOpen
