@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       <footer >
         <div>
-          powered by yearngroup
+          powered by the yearngroup
         </div>
       </footer>
     </>)
