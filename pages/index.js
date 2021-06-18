@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <Head>
         <title>Sharely</title>
-        <link rel="icon" href="/random.png" />
+        <link rel="icon" href="https://yearngroup.herokuapp.com/public/random.png" />
         <meta name="title" content="Sharely" />
         <meta name="description" content="Sharely, how sharing is meant to be" />
 
