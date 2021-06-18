@@ -8,16 +8,17 @@ export default function Home() {
         <title>Sharely</title>
         <link rel="icon" href="/random.png" />
         <meta name="title" content="Sharely" />
-        <meta name="description" content="" />
+        <meta name="description" content="Sharely, how sharing is meant to be" />
 
-
+      </Head>
+      <Head>
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="og:title" content="Sharely" />
         <meta property="og:description" content="Sharely, how sharing is meant to be" />
         <meta property="og:image" content="https://yearngroup.herokuapp.com/public/random.png" />
-
-
+      </Head>
+      <Head>
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="twitter:title" content="Sharely" />
