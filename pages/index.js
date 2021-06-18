@@ -12,7 +12,7 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="og:title" content="Sharely" />
-        <meta property="og:description" content="Sharely, how BBBBBsharing is meant to be" />
+        <meta property="og:description" content="Sharely, how sharing is meant to be" />
         <meta property="og:image" content="https://yearngroup.herokuapp.com/assets/images/random.jpg" />
         <meta property="og:image:secure_url" content="https://yearngroup.herokuapp.com/assets/images/random.jpg" />
         <meta property="og:image:type" content="image/jpg" />
@@ -21,7 +21,7 @@ export default function Home() {
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="twitter:title" content="Sharely" />
-        <meta property="twitter:description" content="Sharely, how  AAAAAsharing is meant to be" />
+        <meta property="twitter:description" content="Sharely, how sharing is meant to be" />
         <meta property="twitter:image" content="https://yearngroup.herokuapp.com/assets/images/random.jpg"></meta>
 
       </Head>
