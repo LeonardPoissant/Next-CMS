@@ -1,35 +1,54 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import NavBar from '../components/NavBar'
 
 export default function Home() {
   return (
-    <Wrapper>
+    <>
+      <Head>
+        <title>Sharely</title>
+        <link rel="icon" href="/random.png" />
+        <meta name="title" content="Sharely" />
+        <meta name="description" content="" />
 
 
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yearngroup.herokuapp.com/" />
+        <meta property="og:title" content="Sharely" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="/random.png" />
 
 
-      <header>
-        <h1>sdfsdf</h1>
-      </header>
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://yearngroup.herokuapp.com/" />
+        <meta property="twitter:title" content="Sharely" />
+        <meta property="twitter:description" content="" />
+        <meta property="twitter:image" content="/random.png"></meta>
+      </Head>
 
-      <section >
+      <Wrapper>
+        <Main>
+          <section >
+            <p>Sharely</p>
+            <p>How sharing is meant to be</p>
+          </section>
 
-        <p>Sharely</p>
-        <p>How sharing is meant to be</p>
-        <iframe width="300" height="315" src="https://www.youtube.com/embed/h7qTI6Njp9g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>      </section>
+        </Main>
 
-      <footer >
-      </footer>
-    </Wrapper>
+      </Wrapper>
+    </>
   )
 }
 
+const Wrapper = styled.div`
 
-const Wrapper = styled.main`
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-height:100vh;
+height: 100vh;
+`;
+
+const Main = styled.div`
+
+
 `;
