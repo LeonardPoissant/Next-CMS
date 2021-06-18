@@ -6,7 +6,7 @@ import Link from 'next/link'
 //import { Link, useParams } from "react-router-dom";
 
 
-import BlogPostBanner from "../../components/blog_post_banner";
+import BlogPostBanner from "../../components/blog-post-banner";
 
 
 
