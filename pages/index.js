@@ -51,7 +51,7 @@ export default function Home({ metaTags }) {
 
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const res = await fetch('http://localhost:5000/meta')
+  const res = await fetch('https://quiet-peak-00993.herokuapp.com/meta')
   const metaTags = await res.json()
 
 
