@@ -38,8 +38,10 @@ export default function Home({ metaTags }) {
         <Main>
           <section >
             <p>Sharely</p>
-            <p>How sharing is meant to be</p>
+            <p>How sharing is meant to besdfsfsdf</p>
             <p>{description}</p>
+            <img src={imgUrl}></img>
+            <div>IM THE BOTTOM DIV</div>
           </section>
 
         </Main>
