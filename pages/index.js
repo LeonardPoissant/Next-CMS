@@ -1,7 +1,12 @@
 import Head from 'next/head'
 import styled from 'styled-components'
 
-export default function Home() {
+export default function Home({ metaTags }) {
+
+  console.log('PRPSS', metaTags.data[0].imgUrl)
+  const imgUrl = metaTags.data[0].imgUrl;
+  const description = metaTags.data[0].description;
+  //console.log('URL', imgUrl)
   return (
     <>
       <Head>
@@ -12,8 +17,8 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="og:title" content="Sharely" />
-        <meta property="og:description" content="Sharely, how sharing is meant to be" />
-        <meta property="og:image" content="https://yearngroup.herokuapp.com/assets/images/random.jpg" />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={imgUrl} />
         <meta property="og:image:secure_url" content="https://yearngroup.herokuapp.com/assets/images/random.jpg" />
         <meta property="og:image:type" content="image/jpg" />
         <meta property="og:image:width" content="400" />
@@ -21,8 +26,8 @@ export default function Home() {
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="twitter:title" content="Sharely" />
-        <meta property="twitter:description" content="Sharely, how sharing is meant to be" />
-        <meta property="twitter:image" content="https://yearngroup.herokuapp.com/assets/images/random.jpg"></meta>
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={imgUrl} ></meta>
 
       </Head>
 
@@ -34,6 +39,7 @@ export default function Home() {
           <section >
             <p>Sharely</p>
             <p>How sharing is meant to be</p>
+            <p>{description}</p>
           </section>
 
         </Main>
@@ -41,6 +47,23 @@ export default function Home() {
       </Wrapper>
     </>
   )
+}
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts
+  const res = await fetch('http://localhost:5000/meta')
+  const metaTags = await res.json()
+
+
+  console.log('posts', metaTags)
+
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      metaTags,
+    },
+  }
 }
 
 const Wrapper = styled.div`
