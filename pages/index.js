@@ -13,12 +13,12 @@ export default function Home({ metaTags }) {
         <title>Sharely</title>
         <link rel="icon" href="/random.jpg" />
         <meta name="title" content="Sharely" />
-        <meta name="description" content="Sharely, how sharing is meant to be" />
+        <meta name="description" content="Sharely, how asddsharing is meant to be" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="og:title" content="Sharely" />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={imgUrl} />
+        <meta property="og:image" content="https://loogart.github.io/leburgerweek/2021/img/og-image.jpg" />
         <meta property="og:image:secure_url" content="https://yearngroup.herokuapp.com/assets/images/random.jpg" />
         <meta property="og:image:type" content="image/jpg" />
         <meta property="og:image:width" content="400" />
