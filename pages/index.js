@@ -18,8 +18,8 @@ export default function Home({ metaTags }) {
         <meta property="og:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="og:title" content="Sharely" />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/cropped-jacques-brel1.jpg" />
-        <meta property="og:image:secure_url" content="https://yearngroup.herokuapp.com/assets/images/random.jpg" />
+        <meta property="og:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png" />
+        <meta property="og:image:secure_url" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/cropped-jacques-brel1.jpg" />
         <meta property="og:image:type" content="image/jpg" />
         <meta property="og:image:width" content="400" />
         <meta property="og:image:height" content="300" />
@@ -40,7 +40,7 @@ export default function Home({ metaTags }) {
             <p>Sharely</p>
             <p>How sharing is meant to besdfsfsdf</p>
             <p>{description}</p>
-            <img src={imgUrl}></img>
+            <img src="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png"></img>
             <div>IM THE BOTTOM DIV</div>
           </section>
 
