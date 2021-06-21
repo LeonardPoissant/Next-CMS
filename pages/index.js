@@ -18,7 +18,7 @@ export default function Home({ metaTags }) {
         <meta property="og:url" content="https://yearngroup.herokuapp.com/" />
         <meta property="og:title" content="Sharely" />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content="https://loogart.github.io/leburgerweek/2021/img/og-image.jpg" />
+        <meta property="og:image" content="s3://pantry-meta-images/cropped-jacques-brel1.jpg" />
         <meta property="og:image:secure_url" content="https://yearngroup.herokuapp.com/assets/images/random.jpg" />
         <meta property="og:image:type" content="image/jpg" />
         <meta property="og:image:width" content="400" />
