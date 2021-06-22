@@ -193,13 +193,13 @@ const Post = (data) => {
             <meta name="title" content="Sharely" />
             <meta name="description" content="Sharely, how asddsharing is meant to be" />
             <meta property="og:type" content="website" />
-            <meta property="og:url" content="https://yearngroup.herokuapp.com/" />
+            <meta property="og:url" content={`https://quiet-peak-00993.herokuapp.com/post/${params.id}/${params.title}`} />
             <meta property="og:title" content="Sharely" />
             <meta property="og:description" content={postDescription} />
             <meta property="og:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png" />
             <meta property="og:image:secure_url" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/cropped-jacques-brel1.jpg" />
             <meta property="twitter:card" content="summary_large_image" />
-            <meta property="twitter:url" content="https://yearngroup.herokuapp.com/" />
+            <meta property="twitter:url" content={`https://quiet-peak-00993.herokuapp.com/post/${params.id}/${params.title}`} />
             <meta property="twitter:title" content="Sharely" />
             <meta property="twitter:description" content={postDescription} />
             <meta property="twitter:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png" ></meta>
