@@ -44,10 +44,10 @@ export async function getStaticProps({ params }) {
     // params contains the post `id`.
     // If the route is like /posts/1, then params.id is 1
     const res = await fetch(`https://quiet-peak-00993.herokuapp.com/post/${params.id}/${params.title}`)
-    const posts = await res.json()
+    const post = await res.json()
 
     // Pass post data to the page via props
-    return { props: { posts } }
+    return { props: { post } }
 }
 
 const Post = (data) => {
@@ -56,7 +56,7 @@ const Post = (data) => {
 
     //----META DEFs----
 
-    let description = data.posts.data.description;
+    let postDescription = data.post.data.description;
     let convertedContent = convertFromRaw(data.posts.data.convertedContent)
     const link = (props) => {
         const { url } = props.contentState.getEntity(props.entityKey).getData();
@@ -195,15 +195,16 @@ const Post = (data) => {
             <meta property="og:type" content="website" />
             <meta property="og:url" content="https://yearngroup.herokuapp.com/" />
             <meta property="og:title" content="Sharely" />
-            <meta property="og:description" content={description} />
+            <meta property="og:description" content={postDescription} />
             <meta property="og:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png" />
             <meta property="og:image:secure_url" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/cropped-jacques-brel1.jpg" />
             <meta property="twitter:card" content="summary_large_image" />
             <meta property="twitter:url" content="https://yearngroup.herokuapp.com/" />
             <meta property="twitter:title" content="Sharely" />
-            <meta property="twitter:description" content={description} />
+            <meta property="twitter:description" content={postDescription} />
             <meta property="twitter:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png" ></meta>
         </Head>
+        <div>{description}</div>
 
         <Wrapper>
 
