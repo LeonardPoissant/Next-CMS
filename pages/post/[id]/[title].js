@@ -57,7 +57,7 @@ const Post = (data) => {
     //----META DEFs----
 
     let postDescription = data.post.data.description;
-    let convertedContent = convertFromRaw(data.posts.data.convertedContent)
+    let convertedContent = convertFromRaw(data.post.data.convertedContent)
     const link = (props) => {
         const { url } = props.contentState.getEntity(props.entityKey).getData();
         return <a href={url}>{props.children}</a>;
@@ -204,7 +204,7 @@ const Post = (data) => {
             <meta property="twitter:description" content={postDescription} />
             <meta property="twitter:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png" ></meta>
         </Head>
-        <div>{description}</div>
+        <div>{postDescription}</div>
 
         <Wrapper>
 
