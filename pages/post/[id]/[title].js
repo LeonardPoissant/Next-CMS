@@ -9,6 +9,7 @@ import {
 import styled from "styled-components";
 import editorStyles from "../../../styles/editorStyles";
 import customStylemap from "../../../EditorStyles/CustomStyleMap";
+import mobileStyles from "../../../styles/editorStylesMobile"
 import {
     YOUTUBE_PREFIX,
     VIMEO_PREFIX,
@@ -168,6 +169,7 @@ const Post = (data) => {
 
     };
 
+
     return (<>
         <Head>
             <title>Sharely</title>
@@ -223,12 +225,19 @@ hyphens:auto;
   border-style: solid;
   border-color: rgb(161, 161, 161);
   border-width: 1px;
-  & {
+  @media (min-width: 736px){
+    &  {
     ${editorStyles}
   }
+  }
+ 
   @media (max-width: 736px) {
     width: 100%;
     height: 75%;
+    margin: 5px;
+    & {
+        ${mobileStyles}
+    }
   }
 `;
 

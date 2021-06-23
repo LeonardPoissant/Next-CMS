@@ -4,13 +4,15 @@ const BlogNav = (props) => {
 
     let arrayOfPages = props.props.data;
 
+    console.log('PAGES', arrayOfPages)
+
 
 
     return (
         <Wrapper>
 
             {arrayOfPages.map((page, index) => (
-                <div>{index + 1}</div>
+                <div key={index}>{index + 1}</div>
             )
             )}
         </Wrapper>
