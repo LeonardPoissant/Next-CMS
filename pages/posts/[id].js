@@ -1,16 +1,13 @@
-import { useRouter } from "next/router";
-import React, { useEffect, useState, useContext } from "react";
 import Posts from "../../components/Posts"
-import SubNav from "../../components/SubNav"
+import BlogNav from "../../components/Blog-pages-nav"
 
-
-const PostPage = ({ posts }) => {
-
-
+const PostPage = (props) => {
 
     return (
-        <><Posts posts={posts}></Posts>
+        <>
+            <Posts posts={props.posts} />
 
+            <BlogNav props={props.arrayOfPages} />
         </>)
 }
 
@@ -25,11 +22,11 @@ export async function getStaticPaths() {
         //start our paths at page 1 not 0;
         id = id + 1;
         return {
-            params: { id: id.toString() }
+            params: { id: id.toString() },
+
 
         }
     })
-
     // We'll pre-render only these paths at build time.
     // { fallback: false } means other routes should 404.
     return { paths, fallback: false }
@@ -37,16 +34,19 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 
-    console.log('params', params)
     // params contains the post `id`.
     // If the route is like /posts/1, then params.id is 1
-    const res = await fetch(`https://quiet-peak-00993.herokuapp.com/posts/${params.id}`)
-    const posts = await res.json()
+    const res = await fetch(`https://quiet-peak-00993.herokuapp.com/posts/${params.id}`);
+    const posts = await res.json();
 
+    console.log("POSTS AAWIT", posts)
+
+    const getArrayOfPages = await fetch('https://quiet-peak-00993.herokuapp.com/posts')
+    const arrayOfPages = await getArrayOfPages.json()
 
 
     // Pass post data to the page via props
-    return { props: { posts } }
+    return { props: { posts, arrayOfPages } }
 }
 
 export default PostPage;

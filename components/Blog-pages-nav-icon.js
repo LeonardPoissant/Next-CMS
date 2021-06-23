@@ -35,7 +35,12 @@ text-align: center;
     :hover{
     cursor: pointer;
     background-color: rgb(0, 128, 255);
-}
+};
+
+@media (max-width: 736px) {
+    margin-left: 56px;};
 `
+
+
 
 export default BlogIcon

@@ -10,18 +10,21 @@ import BlogPostBanner from "./Blog-post-banner";
 
 const Posts = (props) => {
 
+
     let posts = props.posts.data;
+    console.log('POSTS', posts)
 
     return (
         <Wrapper className="HERE?">
             {posts[0] != undefined ? posts.map((post, index) => (
+
                 <BlogPostBanner
                     key={index}
                     id={post._id}
-                    title={post.title}
-                    description={post.description}
-                    category={post.category}
-                    date={post.date}
+                    title={post.post.title}
+                    description={post.post.description}
+                    category={post.post.category}
+                    date={post.post.date}
                 />
             )) : <div>Looks like something went wrong</div>}
         </Wrapper>
@@ -42,6 +45,7 @@ padding:30px;
 @media only screen and (max-width: 667px) {
 
 width:500px;
+padding-top: 100px;
 
 }
 

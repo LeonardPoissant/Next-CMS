@@ -1,28 +1,21 @@
 import { useState, useEffect } from "react";
-import Head from 'next/head'
+import Head from 'next/head';
 import {
-    Editor, EditorState,
-    RichUtils,
-    AtomicBlockUtils,
+    Editor,
+    EditorState,
     CompositeDecorator,
-    ContentState,
-    convertToRaw,
     convertFromRaw,
-    ContentBlock,
-    DraftHandleValue,
-    DraftEditorCommand,
 } from "draft-js";
-
-import editorStyles from "../../../styles/editorStyles";
-
-import customStylemap from "../../../EditorStyles/CustomStyleMap";
 import styled from "styled-components";
+import editorStyles from "../../../styles/editorStyles";
+import customStylemap from "../../../EditorStyles/CustomStyleMap";
 import {
     YOUTUBE_PREFIX,
     VIMEO_PREFIX,
     YOUTUBEMATCH_URL,
     VIMEOMATCH_URL
 } from "../../../utils/media-players-regex";
+
 export async function getStaticPaths() {
 
     const res = await fetch(`https://quiet-peak-00993.herokuapp.com/test`)
@@ -51,13 +44,12 @@ export async function getStaticProps({ params }) {
 }
 
 const Post = (data) => {
-
-    console.log('DATA', data)
-
-    //----META DEFs----
-
+    //----META Definitions----
     let postDescription = data.post.data.description;
-    let convertedContent = convertFromRaw(data.post.data.convertedContent)
+
+    //----Editor state and styling----
+    const [editorState, setEditorState] = useState(EditorState.createEmpty());
+    let convertedContent = convertFromRaw(data.post.data.convertedContent);
     const link = (props) => {
         const { url } = props.contentState.getEntity(props.entityKey).getData();
         return <a href={url}>{props.children}</a>;
@@ -81,18 +73,11 @@ const Post = (data) => {
             component: link,
         },
     ]);
-    const [editorState, setEditorState] = useState(EditorState.createEmpty());
-
-
 
     useEffect(() => {
-        // console.log(convertedContent);
         setEditorState(
             EditorState.createWithContent(convertedContent, decorator)
         );
-
-
-
     }, [])
 
     const onChange = (editorState) => {
@@ -186,7 +171,7 @@ const Post = (data) => {
 
     };
 
-    return (<div>
+    return (<>
         <Head>
             <title>Sharely</title>
             <link rel="icon" href="/random.jpg" />
@@ -204,7 +189,6 @@ const Post = (data) => {
             <meta property="twitter:description" content={postDescription} />
             <meta property="twitter:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png" ></meta>
         </Head>
-        <div>{postDescription}</div>
 
         <Wrapper>
 
@@ -221,19 +205,22 @@ const Post = (data) => {
 
 
         </Wrapper>
-    </div>)
+
+
+    </>)
 }
 const Wrapper = styled.div`
 min-height:100vh;
  display: flex;
 	justify-content: center;
 	align-items: center;
+    @media (max-width: 736px) {
+  padding-top:100px;
+  }
 `;
 
 
 const EditorWrapper = styled.div`
-
- 
  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 hyphens:auto;
   border-style: solid;

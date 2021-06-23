@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import SubNav from "./SubNav"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 
@@ -9,16 +9,21 @@ const NavBar = () => {
 
     const openSubNav = () => {
         setIsOpen(!isOpen)
-
     }
+
+    useEffect(() => {
+        if (isOpen) {
+            setTimeout(() => setIsOpen(!isOpen), 5 * 1000)
+        }
+    }, [isOpen])
+
+
 
 
     return (
         <Nav>
             <Button onClick={() => openSubNav()}>NAV</Button>
             <SubNav isOpen={isOpen} openSubNav={openSubNav} />
-
-
         </Nav>
     )
 

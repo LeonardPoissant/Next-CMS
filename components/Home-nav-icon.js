@@ -45,7 +45,9 @@ text-align: center;
     :hover{
     background-color: rgb(0, 230, 230);
     cursor: pointer;
-}
+};
+@media (max-width: 736px) {
+    margin-top: -49px;};
 
 `
 

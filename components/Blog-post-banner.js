@@ -82,7 +82,11 @@ linear-gradient(0.25turn,#ff4b1f,#1fddff)
     bottom
     no-repeat; 
 background-size:100% 2px ;
+
 z-index:1;
+
+@media only screen and (min-width: 667px) {
+
   :hover {
     left: 0;
  
@@ -103,6 +107,9 @@ z-index:1;
     transition: font-size 1s;
     font-size: 2rem;
   }
+
+}
+  
   @media only screen and (max-width: 667px) {
 
     width:500px;
