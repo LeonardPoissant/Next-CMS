@@ -39,8 +39,6 @@ export async function getStaticProps({ params }) {
     const res = await fetch(`https://quiet-peak-00993.herokuapp.com/posts/${params.id}`);
     const posts = await res.json();
 
-    console.log("POSTS AAWIT", posts)
-
     const getArrayOfPages = await fetch('https://quiet-peak-00993.herokuapp.com/posts')
     const arrayOfPages = await getArrayOfPages.json()
 

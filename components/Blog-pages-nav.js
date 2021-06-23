@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const BlogNav = (props) => {
-    console.log('IN BLOG NAV', props)
+
     let arrayOfPages = props.props.data;
 
-    console.log(arrayOfPages)
+
 
     return (
         <Wrapper>

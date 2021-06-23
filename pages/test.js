@@ -33,14 +33,13 @@ export async function getServerSideProps(context) {
     title: "test22FFFFF"xcvxcvxcv
     _id: "602836e83431205183e04a74"*/
 
-    console.log('CONVERTED', data)
 
     return {
         props: { data }, // will be passed to the page component as props
     }
 }
 const Test = (data) => {
-    console.log('data', data.data.data)
+
     let convertedContent = convertFromRaw(data.data.data.post.convertedContent)
 
     const link = (props) => {

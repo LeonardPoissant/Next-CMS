@@ -18,38 +18,35 @@ import {
 
 export async function getStaticPaths() {
 
-    const res = await fetch(`https://quiet-peak-00993.herokuapp.com/test`)
-    const data = await res.json()
-    console.log('data', data)
+    const res = await fetch(`https://quiet-peak-00993.herokuapp.com/test`);
+    const data = await res.json();
+
     const paths = data.data.map((post, id) => {
 
         return {
-            params: { id: post._id.toString(), title: post.title },
-        }
-    })
-    console.log('PATHS', paths)
-    return { paths, fallback: false }
+            params: { id: post._id.toString(), title: post.post.title },
+        };
+    });
+    return { paths, fallback: false };
 
 
-}
+};
 
 export async function getStaticProps({ params }) {
     // params contains the post `id`.
     // If the route is like /posts/1, then params.id is 1
-    const res = await fetch(`https://quiet-peak-00993.herokuapp.com/post/${params.id}/${params.title}`)
-    const post = await res.json()
-
+    const res = await fetch(`https://quiet-peak-00993.herokuapp.com/post/${params.id}/${params.title}`);
+    const post = await res.json();
     // Pass post data to the page via props
-    return { props: { post, params } }
-}
+    return { props: { post, params } };
+};
 
 const Post = (data) => {
     //----META Definitions----
-    let postDescription = data.post.data.description;
-
+    let postDescription = data.post.data.post.description;
     //----Editor state and styling----
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
-    let convertedContent = convertFromRaw(data.post.data.convertedContent);
+    let convertedContent = convertFromRaw(data.post.data.post.convertedContent);
     const link = (props) => {
         const { url } = props.contentState.getEntity(props.entityKey).getData();
         return <a href={url}>{props.children}</a>;
@@ -78,11 +75,11 @@ const Post = (data) => {
         setEditorState(
             EditorState.createWithContent(convertedContent, decorator)
         );
-    }, [])
+    }, []);
 
     const onChange = (editorState) => {
         setEditorState(editorState);
-    }
+    };
 
 
     const getSrc = ({ src }) => {
@@ -92,7 +89,7 @@ const Post = (data) => {
             let id = "";
             if (!url.match(YOUTUBEMATCH_URL) === undefined) {
                 return console.log("NOT YOUTUBE")
-            }
+            };
 
             if (url.match(YOUTUBEMATCH_URL) != null) {
                 id = url && url.match(YOUTUBEMATCH_URL)[1];
@@ -102,14 +99,14 @@ const Post = (data) => {
                     srcType: "youtube",
                     url,
                 };
-            }
+            };
 
 
         };
         const getVimeoSrc = (url) => {
             if (!url.match(VIMEOMATCH_URL)) {
                 return
-            }
+            };
             const id = url.match(VIMEOMATCH_URL)[3];
             return {
                 srcID: id,
@@ -136,7 +133,7 @@ const Post = (data) => {
                 component: Media,
                 editable: false,
             };
-        }
+        };
         return null;
     };
 
@@ -208,7 +205,7 @@ const Post = (data) => {
 
 
     </>)
-}
+};
 const Wrapper = styled.div`
 min-height:100vh;
  display: flex;

@@ -12,7 +12,7 @@ const Posts = (props) => {
 
 
     let posts = props.posts.data;
-    console.log('POSTS', posts)
+
 
     return (
         <Wrapper className="HERE?">
