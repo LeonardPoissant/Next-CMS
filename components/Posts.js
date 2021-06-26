@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import Link from 'next/link'
 import styled from "styled-components";
+import BlogNav from "./Blog-pages-nav";
 //import { Link, useParams } from "react-router-dom";
 
 
@@ -9,9 +10,8 @@ import BlogPostBanner from "./Blog-post-banner";
 
 
 const Posts = (props) => {
-
-
-    let posts = props.posts.data;
+    let posts = props.posts.posts.data;
+    let arrayOfPages = props.posts.arrayOfPages
 
 
     return (
@@ -27,6 +27,8 @@ const Posts = (props) => {
                     date={post.post.date}
                 />
             )) : <div>Looks like something went wrong</div>}
+            <BlogNav props={arrayOfPages} />
+
         </Wrapper>
     )
 
@@ -34,8 +36,8 @@ const Posts = (props) => {
 
 export default Posts;
 
-const Wrapper = styled.main`
-z-index: -1;
+const Wrapper = styled.section`
+padding-top:100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,8 +46,8 @@ z-index: -1;
 padding:30px;
 @media only screen and (max-width: 667px) {
 
-width:500px;
-padding-top: 100px;
+width:100%;
+
 
 }
 

@@ -66,7 +66,7 @@ const StyledLink = styled(Link)`
 `
 const Wrapper = styled.div`
 
-
+cursor: pointer;
 display:flex;
 justify-content:flex-start;
 align-items:center;
@@ -83,7 +83,7 @@ linear-gradient(0.25turn,#ff4b1f,#1fddff)
     no-repeat; 
 background-size:100% 2px ;
 
-z-index:1;
+//z-index:1;
 
 @media only screen and (min-width: 667px) {
 
@@ -94,7 +94,7 @@ z-index:1;
 
   height:300px;
    
-  z-index: 2;
+  //z-index: 2;
   cursor: pointer;
   }
 
@@ -112,7 +112,7 @@ z-index:1;
   
   @media only screen and (max-width: 667px) {
 
-    width:500px;
+    width:100%;
     padding:19px;
 
 }

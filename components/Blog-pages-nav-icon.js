@@ -4,12 +4,13 @@ import { useRouter } from 'next/router'
 
 
 const BlogIcon = (props) => {
-    const openSubNav = props.openSubNav;
+    const isComponentVisible = props.isComponentVisible
+    const setIsComponentVisible = props.setIsComponentVisible
     const router = useRouter()
 
     const handleNavigation = () => {
         router.push('/posts/1');
-        openSubNav();
+        setIsComponentVisible(!isComponentVisible)
     }
 
     return (<Wrapper onClick={() => handleNavigation()}>
@@ -35,6 +36,9 @@ text-align: center;
     :hover{
     cursor: pointer;
     background-color: rgb(0, 128, 255);
+    :active{
+        background-color: rgb(0, 128, 255);
+ }
 };
 
 @media (max-width: 736px) {

@@ -1,31 +1,16 @@
-
-
-
-
-
-import styled from "styled-components"
-import Link from 'next/link'
-import HomeNav from "./Home-nav-icon"
-import BlogIcon from "./Blog-pages-nav-icon"
+import styled from "styled-components";
+import HomeNav from "./Home-nav-icon";
+import BlogIcon from "./Blog-pages-nav-icon";
 
 const SubNav = (props) => {
-    const isOpen = props.isOpen
-    const openSubNav = props.openSubNav
-
-
+    const isComponentVisible = props.isComponentVisible;
+    const setIsComponentVisible = props.setIsComponentVisible;
 
     return (
-        <>
-            {isOpen ? <Wrapper>
-
-                <HomeNav openSubNav={openSubNav} />
-                <BlogIcon openSubNav={openSubNav} />
-
-
-
-            </Wrapper> : <></>}
-
-        </>
+        <Wrapper>
+            <HomeNav isComponentVisible={isComponentVisible} setIsComponentVisible={setIsComponentVisible} />
+            <BlogIcon isComponentVisible={isComponentVisible} setIsComponentVisible={setIsComponentVisible} />
+        </Wrapper>
     )
 }
 

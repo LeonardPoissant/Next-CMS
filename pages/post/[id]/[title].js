@@ -189,7 +189,7 @@ const Post = (data) => {
             <meta property="twitter:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png" ></meta>
         </Head>
 
-        <Wrapper>
+        <Wrapper tabIndex="3">
 
             <EditorWrapper className="EDITORWRAPPER" >
                 <Editor
@@ -202,7 +202,12 @@ const Post = (data) => {
             </EditorWrapper>
 
 
-
+            <a className="twitter-share-button"
+                rel="location.href"
+                href="https://twitter.com/intent/tweet?text=asdasd"
+            >
+                Tweet
+            </a>
         </Wrapper>
 
 

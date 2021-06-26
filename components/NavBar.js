@@ -1,30 +1,32 @@
-import styled from "styled-components"
-import SubNav from "./SubNav"
-import { useState, useEffect } from "react"
-
-
+import styled from "styled-components";
+import SubNav from "./SubNav";
+import { useEffect } from "react";
+import useComponentVisible from "../hooks/useComponentVisible";
 
 const NavBar = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
 
     const openSubNav = () => {
-        setIsOpen(!isOpen)
+        setIsComponentVisible(!isComponentVisible)
     }
 
     useEffect(() => {
-        if (isOpen) {
-            setTimeout(() => setIsOpen(!isOpen), 5 * 1000)
+        if (isComponentVisible) {
+            setTimeout(() => setIsComponentVisible(!isComponentVisible), 5 * 1000)
         }
-    }, [isOpen])
+    }, [isComponentVisible])
 
 
 
 
     return (
-        <Nav>
-            <Button onClick={() => openSubNav()}>NAV</Button>
-            <SubNav isOpen={isOpen} openSubNav={openSubNav} />
-        </Nav>
+        <>
+            <Nav ref={ref} tabIndex="1">
+                <Button onClick={() => openSubNav()}>NAV</Button>
+                {isComponentVisible && <SubNav setIsComponentVisible={setIsComponentVisible} isComponentVisible={isComponentVisible} />}
+            </Nav>
+
+        </>
     )
 
 

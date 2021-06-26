@@ -3,12 +3,13 @@ import { useRouter } from 'next/router'
 
 
 const HomeNav = (props) => {
-    const openSubNav = props.openSubNav
+    const isComponentVisible = props.isComponentVisible
+    const setIsComponentVisible = props.setIsComponentVisible
     const router = useRouter()
 
     const handleNavigation = () => {
         router.push('/');
-        openSubNav();
+        setIsComponentVisible(!isComponentVisible)
     }
 
     return (
@@ -16,11 +17,6 @@ const HomeNav = (props) => {
 
         <Wrapper onClick={() => handleNavigation()}>
             H
-
-
-
-
-
         </Wrapper>
 
 

@@ -29,7 +29,7 @@ export default function Home({ metaTags }) {
         <Main>
           <section >
             <p>Sharely</p>
-            <p>How sharing is meant to besdfsfsdf</p>
+            <p>How sharing is meant to be</p>
           </section>
 
         </Main>
@@ -58,7 +58,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-height: 100vh;
+height: 85vh;
 `;
 
 const Main = styled.div`

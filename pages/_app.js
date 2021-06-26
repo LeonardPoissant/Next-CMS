@@ -1,6 +1,5 @@
-
-import Head from 'next/head'
-import NavBar from "../components/NavBar"
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 import GlobalStyles from '../styles/global-styles'
 
 function MyApp({ Component, pageProps }) {
@@ -9,11 +8,7 @@ function MyApp({ Component, pageProps }) {
       <GlobalStyles />
       <NavBar />
       <Component {...pageProps} />
-      <footer >
-        <div>
-          powered by the yearngroup
-        </div>
-      </footer>
+      <Footer />
     </>)
 }
 

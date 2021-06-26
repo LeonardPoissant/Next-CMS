@@ -1,15 +1,24 @@
-import Posts from "../../components/Posts"
-import BlogNav from "../../components/Blog-pages-nav"
+import Posts from "../../components/Posts";
+import BlogNav from "../../components/Blog-pages-nav";
+import styled from "styled-components";
 
 const PostPage = (props) => {
 
     return (
         <>
-            <Posts posts={props.posts} />
-
-            <BlogNav props={props.arrayOfPages} />
-        </>)
+            <Posts posts={props} />
+        </>
+    )
 }
+
+const Wrapper = styled.main`
+display: flex;
+flex-direction: column;
+align-items: center;
+z-index:5;
+
+
+`
 
 export async function getStaticPaths() {
     // Call an external API endpoint to get posts
@@ -38,6 +47,7 @@ export async function getStaticProps({ params }) {
     // If the route is like /posts/1, then params.id is 1
     const res = await fetch(`https://quiet-peak-00993.herokuapp.com/posts/${params.id}`);
     const posts = await res.json();
+
 
     const getArrayOfPages = await fetch('https://quiet-peak-00993.herokuapp.com/posts')
     const arrayOfPages = await getArrayOfPages.json()

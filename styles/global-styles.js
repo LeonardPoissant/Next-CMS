@@ -18,8 +18,8 @@ const GlobalStyles = createGlobalStyle`
  
 
  
-    footer {
-      position: absolute;
+    /*footer {
+     // position: absolute;
   bottom: 0;
   width: 100%;
   height: 2.5rem;
@@ -28,8 +28,9 @@ const GlobalStyles = createGlobalStyle`
     justify-content: flex-end;
     align-items: center;
     text-align: center;
+    @media (min-width: 736px){ position: absolute;}
 }
-	
+	*/
 	
 	
 	* {
