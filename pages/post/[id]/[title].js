@@ -171,11 +171,12 @@ const Post = (data) => {
 
     };
 
-    console.log('LOCATION', router.asPath)
+    const postPath = router.asPath.replace(/\s/g, '')
 
-    const fullUrl = "https://yearngroup.herokuapp.com" + router.asPath
 
-    console.log('FULL', fullUrl)
+    const fullUrl = "https://yearngroup.herokuapp.com" + postPath
+
+    console.log('post', postPath)
 
 
 
@@ -200,6 +201,7 @@ const Post = (data) => {
         </Head>
 
         <Wrapper tabIndex="3">
+            <div>{fullUrl}</div>
 
             <EditorWrapper className="EDITORWRAPPER" >
                 <Editor
