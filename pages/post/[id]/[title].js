@@ -17,6 +17,50 @@ import {
     VIMEOMATCH_URL
 } from "../../../utils/media-players-regex";
 import { useRouter } from 'next/router';
+import {
+    EmailShareButton,
+    FacebookShareButton,
+    HatenaShareButton,
+    InstapaperShareButton,
+    LineShareButton,
+    LinkedinShareButton,
+    LivejournalShareButton,
+    MailruShareButton,
+    OKShareButton,
+    PinterestShareButton,
+    PocketShareButton,
+    RedditShareButton,
+    TelegramShareButton,
+    TumblrShareButton,
+    TwitterShareButton,
+    ViberShareButton,
+    VKShareButton,
+    WhatsappShareButton,
+    WorkplaceShareButton
+} from "react-share";
+import {
+    EmailIcon,
+    FacebookIcon,
+    FacebookMessengerIcon,
+    HatenaIcon,
+    InstapaperIcon,
+    LineIcon,
+    LinkedinIcon,
+    LivejournalIcon,
+    MailruIcon,
+    OKIcon,
+    PinterestIcon,
+    PocketIcon,
+    RedditIcon,
+    TelegramIcon,
+    TumblrIcon,
+    TwitterIcon,
+    ViberIcon,
+    VKIcon,
+    WeiboIcon,
+    WhatsappIcon,
+    WorkplaceIcon
+} from "react-share";
 
 export async function getStaticPaths() {
 
@@ -46,11 +90,11 @@ export async function getStaticProps({ params }) {
 const Post = (data) => {
     const router = useRouter();
     let postPath = router.asPath;
-    let fullUrl = encodeURIComponent("https://yearngroup.herokuapp.com" + postPath)
+    let fullUrl = "https://yearngroup.herokuapp.com" + postPath
 
-    console.log('FULL', fullUrl)
     //----META Definitions----
     let postDescription = data.post.data.post.description;
+
     //----Editor state and styling----
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     let convertedContent = convertFromRaw(data.post.data.post.convertedContent);
@@ -174,12 +218,6 @@ const Post = (data) => {
         return media;
 
     };
-    /*useEffect(() => {
-        const s = document.createElement("script");
-        s.setAttribute("src", "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0");
-        s.setAttribute("async", "true");
-        document.head.appendChild(s);
-    }, []);*/
 
 
     return (<>
@@ -199,6 +237,8 @@ const Post = (data) => {
             <meta property="twitter:title" content="Sharely" />
             <meta property="twitter:description" content={postDescription} />
             <meta property="twitter:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png"></meta>
+            <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8" type="text/javascript"></script>
+
         </Head>
 
         <Wrapper tabIndex="3">
@@ -211,19 +251,19 @@ const Post = (data) => {
                     readOnly={true}
                 ></Editor>
             </EditorWrapper>
-            <a href={`https://twitter.com/intent/tweet?text=${fullUrl}`}
-                data-url="location.href"
-                className="twitter-share-button"
-                data-show-count="false"
-                target="_blank"
-                rel="noopener"
-            >
-                Tweet
-            </a>
 
-            <a className="fb-share-button"
-                data-href={"https://yearngroup.herokuapp.com/post/60d36449fd2c671dec1cdc7b/the%20yearn%20is%20out"}
-                data-layout="button_count">FACE</a>
+            <TwitterShareButton
+                url={fullUrl}
+            >
+                <TwitterIcon size={32} />
+
+            </TwitterShareButton>
+
+            <FacebookShareButton
+                url={fullUrl}
+
+            > <FacebookIcon size={32} /></FacebookShareButton>
+
         </Wrapper>
 
 

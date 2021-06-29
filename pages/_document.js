@@ -2,6 +2,8 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 
+
+
 export default class MyDocument extends Document {
     static async getInitialProps(ctx) {
         const sheet = new ServerStyleSheet();
@@ -28,17 +30,23 @@ export default class MyDocument extends Document {
             sheet.seal();
         }
     }
+    //<script async src="https://platform.twitter.com/widgets.js" charset="utf-8" type="text/javascript"></script>
+    //<script async src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0" charset="utf-8" type="text/javascript"></script>
+    //
 
     render() {
         return (
             <Html>
                 <Head>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    <script async src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0" charset="utf-8"></script>
+
                 </Head>
                 <body>
+
+
                     <Main />
-                    <NextScript />
+                    <NextScript>
+
+                    </NextScript>
                 </body>
             </Html>
         )
