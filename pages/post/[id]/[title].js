@@ -171,12 +171,13 @@ const Post = (data) => {
 
     };
 
-    const postPath = router.asPath.replace(/\s/g, '')
+    const postPath = router.asPath.split('%20').join('')
 
+    console.log('post', postPath)
 
     const fullUrl = "https://yearngroup.herokuapp.com" + postPath
 
-    console.log('post', postPath)
+
 
 
 
@@ -201,8 +202,6 @@ const Post = (data) => {
         </Head>
 
         <Wrapper tabIndex="3">
-            <div>{fullUrl}</div>
-
             <EditorWrapper className="EDITORWRAPPER" >
                 <Editor
                     blockRendererFn={mediaBlockRender}
@@ -212,7 +211,7 @@ const Post = (data) => {
                     readOnly={true}
                 ></Editor>
             </EditorWrapper>
-            <a href={`https://twitter.com/intent/tweet?url=https://quiet-peak-00993.herokuapp.com/post/${data.params.id}/${data.params.title}`}
+            <a href={`https://twitter.com/intent/tweet?url=${fullUrl}`}
                 data-url="location.href"
                 class="twitter-share-button"
                 data-show-count="false"
