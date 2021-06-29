@@ -171,7 +171,7 @@ const Post = (data) => {
 
     };
 
-    const postPath = router.asPath.split('%20').join('')
+    const postPath = router.asPath.split('%20').join('%20')
 
     console.log('post', postPath)
 
