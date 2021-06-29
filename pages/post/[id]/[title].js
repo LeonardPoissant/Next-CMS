@@ -16,6 +16,7 @@ import {
     YOUTUBEMATCH_URL,
     VIMEOMATCH_URL
 } from "../../../utils/media-players-regex";
+import { useRouter } from 'next/router';
 
 export async function getStaticPaths() {
 
@@ -43,6 +44,7 @@ export async function getStaticProps({ params }) {
 };
 
 const Post = (data) => {
+    const router = useRouter();
     //----META Definitions----
     let postDescription = data.post.data.post.description;
     //----Editor state and styling----
@@ -169,6 +171,14 @@ const Post = (data) => {
 
     };
 
+    console.log('LOCATION', router.asPath)
+
+    const fullUrl = "https://yearngroup.herokuapp.com" + router.asPath
+
+    console.log('FULL', fullUrl)
+
+
+
 
     return (<>
         <Head>
@@ -200,7 +210,7 @@ const Post = (data) => {
                     readOnly={true}
                 ></Editor>
             </EditorWrapper>
-            <a href="https://twitter.com/intent/tweet?url=location.href"
+            <a href={`https://twitter.com/intent/tweet?url=${fullUrl}`}
                 data-url="location.href"
                 class="twitter-share-button"
                 data-show-count="false"
