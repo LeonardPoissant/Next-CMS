@@ -45,6 +45,8 @@ export async function getStaticProps({ params }) {
 
 const Post = (data) => {
     const router = useRouter();
+    let postPath = router.asPath;
+    let fullUrl = encodeURIComponent("https://yearngroup.herokuapp.com" + postPath)
     //----META Definitions----
     let postDescription = data.post.data.post.description;
     //----Editor state and styling----
@@ -170,16 +172,12 @@ const Post = (data) => {
         return media;
 
     };
-
-    const postPath = router.asPath
-
-    console.log('post', postPath)
-
-    const fullUrl = encodeURIComponent("https://yearngroup.herokuapp.com" + postPath)
-
-
-
-
+    /*useEffect(() => {
+        const s = document.createElement("script");
+        s.setAttribute("src", "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0");
+        s.setAttribute("async", "true");
+        document.head.appendChild(s);
+    }, []);*/
 
 
     return (<>
@@ -198,7 +196,7 @@ const Post = (data) => {
             <meta property="twitter:url" content={`https://quiet-peak-00993.herokuapp.com/post/${data.params.id}/${data.params.title}`} />
             <meta property="twitter:title" content="Sharely" />
             <meta property="twitter:description" content={postDescription} />
-            <meta property="twitter:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png" ></meta>
+            <meta property="twitter:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png"></meta>
         </Head>
 
         <Wrapper tabIndex="3">
@@ -221,8 +219,9 @@ const Post = (data) => {
                 Tweet
             </a>
 
-
-
+            <a className="fb-share-button"
+                data-href="https://www.your-domain.com/your-page.html"
+                data-layout="button_count">FACE</a>
         </Wrapper>
 
 
@@ -231,6 +230,7 @@ const Post = (data) => {
 const Wrapper = styled.div`
 min-height:100vh;
  display: flex;
+ flex-direction: column;
 	justify-content: center;
 	align-items: center;
     @media (max-width: 736px) {

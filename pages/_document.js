@@ -1,5 +1,6 @@
-import Document from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+
 
 export default class MyDocument extends Document {
     static async getInitialProps(ctx) {
@@ -26,5 +27,20 @@ export default class MyDocument extends Document {
         } finally {
             sheet.seal();
         }
+    }
+
+    render() {
+        return (
+            <Html>
+                <Head>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <script async src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0" charset="utf-8"></script>
+                </Head>
+                <body>
+                    <Main />
+                    <NextScript />
+                </body>
+            </Html>
+        )
     }
 }
