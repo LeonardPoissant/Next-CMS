@@ -175,7 +175,7 @@ const Post = (data) => {
 
     console.log('post', postPath)
 
-    const fullUrl = "https://yearngroup.herokuapp.com" + postPath
+    const fullUrl = encodeURIComponent("https://yearngroup.herokuapp.com" + postPath)
 
 
 
