@@ -200,7 +200,8 @@ const Post = (data) => {
                     readOnly={true}
                 ></Editor>
             </EditorWrapper>
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+            <a href="https://twitter.com/intent/tweet"
+                data-url="location.href"
                 class="twitter-share-button"
                 data-show-count="false"
                 target="_blank"
