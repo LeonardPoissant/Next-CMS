@@ -47,6 +47,8 @@ const Post = (data) => {
     const router = useRouter();
     let postPath = router.asPath;
     let fullUrl = encodeURIComponent("https://yearngroup.herokuapp.com" + postPath)
+
+    console.log('FULL', fullUrl)
     //----META Definitions----
     let postDescription = data.post.data.post.description;
     //----Editor state and styling----
@@ -220,7 +222,7 @@ const Post = (data) => {
             </a>
 
             <a className="fb-share-button"
-                data-href={`${fullUrl}`}
+                data-href={"https://yearngroup.herokuapp.com/post/60d36449fd2c671dec1cdc7b/the%20yearn%20is%20out"}
                 data-layout="button_count">FACE</a>
         </Wrapper>
 
