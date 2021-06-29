@@ -220,7 +220,7 @@ const Post = (data) => {
             </a>
 
             <a className="fb-share-button"
-                data-href={`https://yearngroup.herokuapp.com${fullUrl}`}
+                data-href={`${fullUrl}`}
                 data-layout="button_count">FACE</a>
         </Wrapper>
 
