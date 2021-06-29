@@ -171,7 +171,7 @@ const Post = (data) => {
 
     };
 
-    const postPath = router.asPath.split('%20').join('%20')
+    const postPath = router.asPath
 
     console.log('post', postPath)
 
@@ -211,9 +211,9 @@ const Post = (data) => {
                     readOnly={true}
                 ></Editor>
             </EditorWrapper>
-            <a href={`https://twitter.com/intent/tweet?url=${fullUrl}`}
+            <a href={`https://twitter.com/intent/tweet?text=${fullUrl}`}
                 data-url="location.href"
-                class="twitter-share-button"
+                className="twitter-share-button"
                 data-show-count="false"
                 target="_blank"
                 rel="noopener"
