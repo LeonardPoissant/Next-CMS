@@ -34,21 +34,5 @@ export default class MyDocument extends Document {
     //<script async src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0" charset="utf-8" type="text/javascript"></script>
     //
 
-    render() {
-        return (
-            <Html>
-                <Head>
 
-                </Head>
-                <body>
-
-
-                    <Main />
-                    <NextScript>
-
-                    </NextScript>
-                </body>
-            </Html>
-        )
-    }
 }

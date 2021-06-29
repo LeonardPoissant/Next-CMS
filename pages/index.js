@@ -33,6 +33,7 @@ export default function Home({ metaTags }) {
             <p>Sharely</p>
             <p>How sharing is meant to be</p>
           </section>
+          <img src="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png"></img>
 
         </Main>
 

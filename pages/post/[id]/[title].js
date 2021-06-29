@@ -91,8 +91,12 @@ export async function getStaticProps({ params }) {
 const Post = (data) => {
     const router = useRouter();
     let postPath = router.asPath;
+
+    console.log('PATH:', postPath)
     let fullUrl = "https://yearngroup.herokuapp.com" + postPath
     let encodedUrl = encodeURIComponent("https://yearngroup.herokuapp.com" + postPath)
+
+    console.log('ENCODED:', encodedUrl)
 
     //----META Definitions----
     let postDescription = data.post.data.post.description;
@@ -238,7 +242,7 @@ const Post = (data) => {
             <meta property="twitter:url" content={`https://quiet-peak-00993.herokuapp.com/post/${data.params.id}/${data.params.title}`} />
             <meta property="twitter:title" content="Sharely" />
             <meta property="twitter:description" content={postDescription} />
-            <meta property="twitter:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png"></meta>
+            <meta property="twitter:image" content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png" ></meta>
             <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8" type="text/javascript"></script>
 
         </Head>
@@ -256,18 +260,16 @@ const Post = (data) => {
 
             <SocialShare props={fullUrl} />
             <a href={`https://twitter.com/intent/tweet?text=${encodedUrl}`}
-
-                class="twitter-share-button"
                 className="twitter-share-button"
                 data-show-count="false"
                 target="_blank"
-                rel="noopener" />
+                rel="noopener"
+            >
+                Tweet
+            </a>
 
 
-            <FacebookShareButton
-                url={fullUrl}
 
-            > <FacebookIcon size={32} /></FacebookShareButton>
 
         </Wrapper>
 
