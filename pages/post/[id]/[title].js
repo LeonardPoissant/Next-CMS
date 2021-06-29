@@ -17,6 +17,7 @@ import {
     VIMEOMATCH_URL
 } from "../../../utils/media-players-regex";
 import { useRouter } from 'next/router';
+import SocialShare from "../../../components/Social-share";
 import {
     EmailShareButton,
     FacebookShareButton,
@@ -91,6 +92,7 @@ const Post = (data) => {
     const router = useRouter();
     let postPath = router.asPath;
     let fullUrl = "https://yearngroup.herokuapp.com" + postPath
+    let encodedUrl = encodeURIComponent("https://yearngroup.herokuapp.com" + postPath)
 
     //----META Definitions----
     let postDescription = data.post.data.post.description;
@@ -252,12 +254,15 @@ const Post = (data) => {
                 ></Editor>
             </EditorWrapper>
 
-            <TwitterShareButton
-                url={fullUrl}
-            >
-                <TwitterIcon size={32} />
+            <SocialShare props={fullUrl} />
+            <a href={`https://twitter.com/intent/tweet?text=${encodedUrl}`}
 
-            </TwitterShareButton>
+                class="twitter-share-button"
+                className="twitter-share-button"
+                data-show-count="false"
+                target="_blank"
+                rel="noopener" />
+
 
             <FacebookShareButton
                 url={fullUrl}
