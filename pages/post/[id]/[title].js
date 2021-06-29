@@ -186,7 +186,7 @@ const Post = (data) => {
             <title>Sharely</title>
             <link rel="icon" href="/random.jpg" />
             <meta name="title" content="Sharely" />
-            <meta name="description" content="Sharely, how asddsharing is meant to be" />
+            <meta name="description" content="Sharely, how sharing is meant to be" />
             <meta property="og:type" content="website" />
             <meta property="og:url" content={`https://quiet-peak-00993.herokuapp.com/post/${data.params.id}/${data.params.title}`} />
             <meta property="og:title" content="Sharely" />
@@ -212,7 +212,7 @@ const Post = (data) => {
                     readOnly={true}
                 ></Editor>
             </EditorWrapper>
-            <a href={`https://twitter.com/intent/tweet?url=${fullUrl}`}
+            <a href={`https://twitter.com/intent/tweet?url=https://quiet-peak-00993.herokuapp.com/post/${data.params.id}/${data.params.title}`}
                 data-url="location.href"
                 class="twitter-share-button"
                 data-show-count="false"
