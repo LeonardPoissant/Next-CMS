@@ -200,14 +200,17 @@ const Post = (data) => {
                     readOnly={true}
                 ></Editor>
             </EditorWrapper>
-
-
-            <a className="twitter-share-button"
-                rel="location.href"
-                href="https://twitter.com/intent/tweet?text=asdasd"
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                class="twitter-share-button"
+                data-show-count="false"
+                target="_blank"
+                rel="noopener"
             >
                 Tweet
             </a>
+
+
+
         </Wrapper>
 
 
@@ -230,6 +233,8 @@ hyphens:auto;
   border-style: solid;
   border-color: rgb(161, 161, 161);
   border-width: 1px;
+  min-width: 600px;
+  min-height: fit-content;
   @media (min-width: 736px){
     &  {
     ${editorStyles}

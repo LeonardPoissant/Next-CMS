@@ -1,8 +1,20 @@
+import { useEffect } from "react";
 import Posts from "../../components/Posts";
 import BlogNav from "../../components/Blog-pages-nav";
 import styled from "styled-components";
 
+
 const PostPage = (props) => {
+
+    /*useEffect(() => {
+        fetch('https://quiet-peak-00993.herokuapp.com/posts')
+            .then(res => res.json())
+            .then((posts) => {
+                console.log('POSTS', posts)
+            })
+    }, [])*/
+
+
 
     return (
         <>
@@ -20,7 +32,7 @@ z-index:5;
 
 `
 
-export async function getStaticPaths() {
+/*export async function getStaticPaths() {
     // Call an external API endpoint to get posts
     const res = await fetch('https://quiet-peak-00993.herokuapp.com/posts')
     const posts = await res.json()
@@ -39,9 +51,9 @@ export async function getStaticPaths() {
     // We'll pre-render only these paths at build time.
     // { fallback: false } means other routes should 404.
     return { paths, fallback: false }
-}
+}*/
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
 
     // params contains the post `id`.
     // If the route is like /posts/1, then params.id is 1
