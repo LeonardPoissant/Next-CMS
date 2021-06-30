@@ -259,7 +259,7 @@ const Post = (data) => {
             </EditorWrapper>
 
             <SocialShare props={fullUrl} />
-            <a href={`https://twitter.com/intent/tweet?text=${encodedUrl}`}
+            <a href={`https://twitter.com/intent/tweet?url=${encodedUrl}`}
                 className="twitter-share-button"
                 data-show-count="false"
                 target="_blank"
