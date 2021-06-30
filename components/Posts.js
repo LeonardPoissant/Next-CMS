@@ -13,6 +13,10 @@ const Posts = (props) => {
     let posts = props.posts.posts.data;
     let arrayOfPages = props.posts.arrayOfPages
 
+    posts.map((post) => {
+        console.log('POSTS', post)
+    })
+
 
     return (
         <Wrapper className="HERE?">

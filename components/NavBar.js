@@ -10,11 +10,11 @@ const NavBar = () => {
         setIsComponentVisible(!isComponentVisible)
     }
 
-    /*useEffect(() => {
+    useEffect(() => {
         if (isComponentVisible) {
             setTimeout(() => setIsComponentVisible(!isComponentVisible), 5 * 1000)
         }
-    }, [isComponentVisible])*/
+    }, [isComponentVisible])
 
 
 
@@ -40,12 +40,12 @@ display: flex;
     align-items: center;
 width: 100%;
     height: 63px;
-    margin-left: 6px;
-    background-color: white;
+    
 
 
     @media (max-width: 736px) {
-
+        margin-left: 6px;
+    background-color: white;
         width: 97%;}
     
 
