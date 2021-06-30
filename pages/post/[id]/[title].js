@@ -63,7 +63,7 @@ import {
     WorkplaceIcon
 } from "react-share";
 
-export async function getStaticPaths() {
+/*export async function getStaticPaths() {
 
     const res = await fetch(`https://quiet-peak-00993.herokuapp.com/test`);
     const data = await res.json();
@@ -77,9 +77,9 @@ export async function getStaticPaths() {
     return { paths, fallback: false };
 
 
-};
+};*/
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     // params contains the post `id`.
     // If the route is like /posts/1, then params.id is 1
     const res = await fetch(`https://quiet-peak-00993.herokuapp.com/post/${params.id}/${params.title}`);
@@ -248,6 +248,7 @@ const Post = (data) => {
         </Head>
 
         <Wrapper tabIndex="3">
+
             <EditorWrapper className="EDITORWRAPPER" >
                 <Editor
                     blockRendererFn={mediaBlockRender}
@@ -274,16 +275,32 @@ const Post = (data) => {
         </Wrapper>
 
 
+
     </>)
 };
+
+const ZINDEXNONSENSE = styled.div`
+    background-color: white;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
 const Wrapper = styled.div`
+
 min-height:100vh;
+
+
  display: flex;
  flex-direction: column;
 	justify-content: center;
 	align-items: center;
+    padding-top:100px;
     @media (max-width: 736px) {
-  padding-top:100px;
+
+  width:fit-content;
   }
 `;
 
@@ -294,18 +311,18 @@ hyphens:auto;
   border-style: solid;
   border-color: rgb(161, 161, 161);
   border-width: 1px;
-  min-width: 600px;
   min-height: fit-content;
   @media (min-width: 736px){
+    min-width: 600px;
     &  {
     ${editorStyles}
   }
   }
  
   @media (max-width: 736px) {
-    width: 100%;
-    height: 75%;
+    max-height: 75%;
     margin: 5px;
+    max-width: 404px;
     & {
         ${mobileStyles}
     }

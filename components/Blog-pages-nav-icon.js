@@ -22,7 +22,7 @@ const BlogIcon = (props) => {
 
 const Wrapper = styled.div`
 position: absolute;
-z-index: 2;
+
 background-color: white;
 margin-top: -49px;
 margin-left: 25px;

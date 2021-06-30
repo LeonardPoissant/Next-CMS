@@ -10,11 +10,11 @@ const NavBar = () => {
         setIsComponentVisible(!isComponentVisible)
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (isComponentVisible) {
             setTimeout(() => setIsComponentVisible(!isComponentVisible), 5 * 1000)
         }
-    }, [isComponentVisible])
+    }, [isComponentVisible])*/
 
 
 
@@ -33,14 +33,21 @@ const NavBar = () => {
 }
 
 const Nav = styled.nav`
-z-index:9;
+z-index:2;
 position: fixed;
 padding: 16px;
-width:193px;
-height:136px;
+display: flex;
+    align-items: center;
+width: 100%;
+    height: 63px;
+    margin-left: 6px;
+    background-color: white;
 
 
-  
+    @media (max-width: 736px) {
+
+        width: 97%;}
+    
 
 `
 

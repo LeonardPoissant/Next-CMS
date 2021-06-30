@@ -26,7 +26,7 @@ const HomeNav = (props) => {
 }
 
 const Wrapper = styled.div`
-z-index: 2;
+
 position: absolute;
 margin-top: 17px;
 background-color: white;

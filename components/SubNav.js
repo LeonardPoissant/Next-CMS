@@ -17,10 +17,11 @@ const SubNav = (props) => {
 export default SubNav
 
 const Wrapper = styled.div`
-z-index: 3;
+
 position: absolute;
 
 margin-left: 100px;
+margin-top: 47px;
 
 /*border: solid;
 border-radius: 50%;
