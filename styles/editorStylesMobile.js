@@ -7,6 +7,12 @@ const draftJsMobileCss = `
     width:100%;
   };
 
+  .public-DraftEditor-content figure iframe{
+
+    width: 100%;
+    
+  };
+
 
 
 `;

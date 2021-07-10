@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import SubNav from "./SubNav";
-import { useEffect } from "react";
 import useComponentVisible from "../hooks/useComponentVisible";
 
 const NavBar = () => {
@@ -8,16 +7,7 @@ const NavBar = () => {
 
     const openSubNav = () => {
         setIsComponentVisible(!isComponentVisible)
-    }
-
-    useEffect(() => {
-        if (isComponentVisible) {
-            setTimeout(() => setIsComponentVisible(!isComponentVisible), 5 * 1000)
-        }
-    }, [isComponentVisible])
-
-
-
+    };
 
     return (
         <>

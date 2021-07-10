@@ -86,30 +86,26 @@ background-size:100% 2px ;
 //z-index:1;
 
 @media only screen and (min-width: 667px) {
-
   :hover {
-    left: 0;
- 
+    left: 0; 
   width:900px;
-
   height:300px;
-   
-  //z-index: 2;
   cursor: pointer;
   }
-
   &:hover .test{
     transition: width 1s;
-    width:400px
-  }
+    width:400px;
 
+  background-color: white;
+  }
   &:hover .details-container{
     transition: font-size 1s;
     font-size: 2rem;
+ 
+  background-color: white;
+ z-index:3;
   }
-
 }
-  
   @media only screen and (max-width: 667px) {
 
     width:100%;

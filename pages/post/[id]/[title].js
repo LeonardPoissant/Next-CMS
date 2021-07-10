@@ -300,7 +300,7 @@ min-height:100vh;
     padding-top:100px;
     @media (max-width: 736px) {
 
-  width:fit-content;
+  //width:fit-content;
   }
 `;
 
@@ -311,9 +311,12 @@ hyphens:auto;
   border-style: solid;
   border-color: rgb(161, 161, 161);
   border-width: 1px;
+
+    height: max-content;
   min-height: fit-content;
   @media (min-width: 736px){
-    min-width: 600px;
+    max-width: 600px;
+   
     &  {
     ${editorStyles}
   }

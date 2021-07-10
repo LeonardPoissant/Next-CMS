@@ -9,8 +9,9 @@ const BlogIcon = (props) => {
     const router = useRouter()
 
     const handleNavigation = () => {
-        router.push('/posts/1');
         setIsComponentVisible(!isComponentVisible)
+        router.push('/posts/1');
+
     }
 
     return (<Wrapper onClick={() => handleNavigation()}>
