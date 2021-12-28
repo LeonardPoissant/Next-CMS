@@ -22,10 +22,6 @@ const BlogPostBanner = (props) => {
 
 
   return (
-
-
-
-
     <StyledLink href={{
       pathname: '/post/[id]/[title]',
       query: {
@@ -34,9 +30,6 @@ const BlogPostBanner = (props) => {
       },
     }}>
       <Wrapper>
-
-
-
         <ThumbnailWrapper className="test">
           <Thumbnail src={thumbnailCategory === "random" ? randomThumbnail : thumbnailCategory === "coding" ? codingThumbnail : defaultThumbnail} />
         </ThumbnailWrapper>
@@ -48,7 +41,6 @@ const BlogPostBanner = (props) => {
             <CreatedOn>{props.date}</CreatedOn>
           </SubContainer>
         </DetailsContainer>
-
       </Wrapper>
     </StyledLink>
 

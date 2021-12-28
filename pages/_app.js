@@ -6,8 +6,6 @@ import GlobalStyles from '../styles/global-styles'
 function MyApp({ Component, pageProps }) {
   return (
     <>
-
-
       <GlobalStyles />
       <NavBar />
       <Component {...pageProps} />

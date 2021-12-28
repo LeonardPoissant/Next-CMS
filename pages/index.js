@@ -2,10 +2,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 
 export default function Home({ metaTags }) {
-
   const description = metaTags.data[0].description;
-
-
 
   return (
     <>
@@ -33,9 +30,7 @@ export default function Home({ metaTags }) {
             <p>Sharely</p>
             <p>How sharing is meant to be</p>
           </section>
-
         </Main>
-
       </Wrapper>
     </>
   )

@@ -91,12 +91,8 @@ export async function getServerSideProps({ params }) {
 const Post = (data) => {
     const router = useRouter();
     let postPath = router.asPath;
-
-    console.log('PATH:', postPath)
     let fullUrl = "https://yearngroup.herokuapp.com" + postPath
     let encodedUrl = encodeURIComponent("https://yearngroup.herokuapp.com" + postPath)
-
-    console.log('ENCODED:', encodedUrl)
 
     //----META Definitions----
     let postDescription = data.post.data.post.description;
