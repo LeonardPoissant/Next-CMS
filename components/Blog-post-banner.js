@@ -22,6 +22,8 @@ const BlogPostBanner = (props) => {
 
 
   return (
+
+    <li tabIndex={0}>
     <StyledLink href={{
       pathname: '/post/[id]/[title]',
       query: {
@@ -43,7 +45,7 @@ const BlogPostBanner = (props) => {
         </DetailsContainer>
       </Wrapper>
     </StyledLink>
-
+    </li>
   )
 };
 
@@ -56,7 +58,7 @@ const StyledLink = styled(Link)`
 
 
 `
-const Wrapper = styled.div`
+const Wrapper = styled.a`
 
 cursor: pointer;
 display:flex;

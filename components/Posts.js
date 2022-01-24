@@ -14,7 +14,7 @@ const Posts = (props) => {
     let arrayOfPages = props.posts.arrayOfPages
 
     return (
-        <Wrapper className="HERE?">
+        <>
             {posts[0] != undefined ? posts.map((post, index) => (
                 <BlogPostBanner
                     key={index}
@@ -26,14 +26,14 @@ const Posts = (props) => {
                 />
             )) : <div>Looks like something went wrong</div>}
             <BlogNav props={arrayOfPages} />
-        </Wrapper>
+            </>
     )
 
 };
 
 export default Posts;
 
-const Wrapper = styled.section`
+const Wrapper = styled.li`
 padding-top:100px;
 display: flex;
 justify-content: center;
