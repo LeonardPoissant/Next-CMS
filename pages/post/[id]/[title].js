@@ -93,6 +93,7 @@ const Post = (data) => {
     let postPath = router.asPath;
     let fullUrl = "https://yearngroup.herokuapp.com" + postPath
     let encodedUrl = encodeURIComponent("https://yearngroup.herokuapp.com" + postPath)
+    let test = decodeURI("https://yearngroup.herokuapp.com" + postPath)
 
     //----META Definitions----
     let postDescription = data.post.data.post.description;
@@ -243,7 +244,7 @@ const Post = (data) => {
 
         </Head>
 
-        <Wrapper tabIndex="3">
+        <Wrapper>
 
             <EditorWrapper className="EDITORWRAPPER" >
                 <Editor
@@ -254,22 +255,15 @@ const Post = (data) => {
                     readOnly={true}
                 ></Editor>
             </EditorWrapper>
+           
 
-            <SocialShare props={fullUrl} />
-            <a href={`https://twitter.com/intent/tweet?url=${encodedUrl}`}
-                className="twitter-share-button"
-                data-show-count="false"
-                target="_blank"
-                rel="noopener"
-            >
-                Tweet
-            </a>
+         
 
 
 
 
         </Wrapper>
-
+        <SocialShare encodedUrl={test} />
 
 
     </>)
