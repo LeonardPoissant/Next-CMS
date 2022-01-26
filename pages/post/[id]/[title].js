@@ -18,50 +18,6 @@ import {
 } from "../../../utils/media-players-regex";
 import { useRouter } from 'next/router';
 import SocialShare from "../../../components/Social-share";
-import {
-    EmailShareButton,
-    FacebookShareButton,
-    HatenaShareButton,
-    InstapaperShareButton,
-    LineShareButton,
-    LinkedinShareButton,
-    LivejournalShareButton,
-    MailruShareButton,
-    OKShareButton,
-    PinterestShareButton,
-    PocketShareButton,
-    RedditShareButton,
-    TelegramShareButton,
-    TumblrShareButton,
-    TwitterShareButton,
-    ViberShareButton,
-    VKShareButton,
-    WhatsappShareButton,
-    WorkplaceShareButton
-} from "react-share";
-import {
-    EmailIcon,
-    FacebookIcon,
-    FacebookMessengerIcon,
-    HatenaIcon,
-    InstapaperIcon,
-    LineIcon,
-    LinkedinIcon,
-    LivejournalIcon,
-    MailruIcon,
-    OKIcon,
-    PinterestIcon,
-    PocketIcon,
-    RedditIcon,
-    TelegramIcon,
-    TumblrIcon,
-    TwitterIcon,
-    ViberIcon,
-    VKIcon,
-    WeiboIcon,
-    WhatsappIcon,
-    WorkplaceIcon
-} from "react-share";
 
 /*export async function getStaticPaths() {
 
@@ -245,7 +201,6 @@ const Post = (data) => {
         </Head>
 
         <Wrapper>
-
             <EditorWrapper className="EDITORWRAPPER" >
                 <Editor
                     blockRendererFn={mediaBlockRender}
@@ -255,41 +210,20 @@ const Post = (data) => {
                     readOnly={true}
                 ></Editor>
             </EditorWrapper>
-           
-
-         
-
-
-
-
         </Wrapper>
-        <SocialShare encodedUrl={test} />
-
-
+        <SocialShare encodedUrl={test}/>
     </>)
 };
 
-const ZINDEXNONSENSE = styled.div`
-    background-color: white;
-    z-index: 99;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`;
 
-const Wrapper = styled.div`
-
+const Wrapper = styled.main`
 min-height:100vh;
-
-
  display: flex;
  flex-direction: column;
 	justify-content: center;
 	align-items: center;
     padding-top:100px;
     @media (max-width: 736px) {
-
   //width:fit-content;
   }
 `;
@@ -322,4 +256,4 @@ hyphens:auto;
   }
 `;
 
-export default Post
+export default Post;
