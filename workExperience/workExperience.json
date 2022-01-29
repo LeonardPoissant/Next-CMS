@@ -3,9 +3,14 @@
 		{
 			"title": "DevOps- Full-stack developper-contract-fulltime",
 			"company": "Mondata",
-			"links": [],
-			"description": "Develop the The Project Factory app with clients requirements (SOC2 and a11y best practices)",
-			"logo": "/mondata-logo.png"
+			"links": [
+				{
+					"href": "https://theprojectfactory.ca/",
+					"name": "The Project Factory"
+				}
+			],
+			"description": "Develop the The Project Factory app with the client's requirements: Deliver new features every two weeks, tight follow up and correction of bugs.",
+			"description2": "For this project I was tasked to work on different areas of the app, create new forms in the front-end and their back-end counterparts, make sure our calls respected SOC2 sertification make sure the provided designs were properly coded as well "
 		},
 		{
 			"title": "Full-stack developper-freelance",

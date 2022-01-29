@@ -10,6 +10,12 @@ const WorkExperienceComponent = (props) => {
 					<Position>{props.workExperience.title}</Position>
 				</CompanyAndPosition>
 				<p>{props.workExperience.description}</p>
+
+				{props.workExperience.links.map((link) => (
+					<a href={link.href} target="_blank">
+						{link.name}
+					</a>
+				))}
 			</Wrapper>
 		</>
 	);

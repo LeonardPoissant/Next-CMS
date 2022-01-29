@@ -85,6 +85,7 @@ const Wrapper = styled.main`
 const SectionWrapper = styled.section`
 	display: flex;
 	margin-top: 12.5rem;
+	margin-right: 6.25rem;
 `;
 const WorkExperiencesWrapper = styled.div`
 	display: flex;
