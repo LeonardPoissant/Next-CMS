@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
     min-height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden;
+    
 		font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     
@@ -41,6 +41,64 @@ const GlobalStyles = createGlobalStyle`
     list-style-type: none;
     margin: 0;
     padding: 0;
+  }
+
+  .line1{
+    width: 30px;
+    height: 28px;
+    border-bottom: 1px solid black;
+    position: absolute;
+    margin-left:-19px;
+    &.second-triangle{
+      width: 29px;
+    height: 28px;
+    border-bottom: 1px solid black;
+    position: absolute;
+    margin-left: -19px;
+
+    }
+  }
+
+  .line2{
+    width: 24px;
+    height: 22px;
+    border-bottom: 1px solid black;
+    position: absolute;
+    transform: rotate(
+60deg
+);
+   &.second-triangle{
+      
+    }  
+  }
+
+  .line3{
+    margin-top: 9px;
+    margin-left: -13px;
+    width: 28px;
+    height: 29px;
+   
+    border-bottom: 1px solid black;
+    position: absolute;
+    transform: rotate(
+122deg
+);
+&.second-triangle{
+  margin-top: 5px;
+    margin-left: -4px;
+    width: 27px;
+    height: 51px;
+    border-bottom: 1px solid black;
+    position: absolute;
+    -webkit-transform: rotate(
+122deg
+);
+    -ms-transform: rotate(122deg);
+    transform: rotate(
+126deg
+);
+      
+}
   }
   
   `;
