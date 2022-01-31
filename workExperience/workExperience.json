@@ -1,0 +1,40 @@
+{
+	"workExperiences": [
+		{
+			"title": "DevOps- Full-stack developper-contract-fulltime",
+			"company": "Mondata",
+			"links": [
+				{
+					"href": "https://theprojectfactory.ca/",
+					"name": "The Project Factory"
+				}
+			],
+			"description": "Develop the The Project Factory app with the client's requirements: Deliver new features every two weeks, tight follow up and correction of bugs.",
+			"description2": "For this project I was tasked to work on different areas of the app, create new forms in the front-end and their back-end counterparts, make sure our calls respected SOC2 sertification make sure the provided designs were properly coded as well "
+		},
+		{
+			"title": "Full-stack developper-freelance",
+			"company": "People Mover",
+			"links": [],
+			"description": "Ensure the integration of the new designs for the oncoming festivals.Develop a new interface for the inscriptions of restaurants. Make the migration from Shopify to Stripe for the payment method."
+		},
+		{
+			"title": "Full-stack developper-freelance",
+			"company": "SOS-Ticket",
+			"links": [],
+			"description": "Develop an option to send emails for the customer relationship management system: Create an automated system to send communications, on demand or on a predefined schedule to the clients. Create new endpoints in the back-end to add the communications to the database. Modify the front-end interface to support the new option."
+		},
+		{
+			"title": "Full-stack developper-freelance",
+			"company": "Lost iN",
+			"links": [],
+			"description": "Add a new functionality to the content managing system:Create new endpoints in the back-end to manage the addition of a new product in the database. Add a new tab in the front-end interface to make these new requests. Develop a promotional page with the Vimeo API. "
+		},
+		{
+			"title": "screenwriter/author",
+			"company": "Pixcom",
+			"links": [],
+			"description": "Author of the  series  Un Tueur Si Proche and J’aurais donc dû docteur!"
+		}
+	]
+}
