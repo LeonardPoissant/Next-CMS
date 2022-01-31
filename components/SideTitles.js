@@ -14,12 +14,14 @@ const SideTitles = (props) => {
 
 const WorkExperience = styled.a`
 	position: sticky;
+	isolation: isolate;
+	z-index: 1;
 	top: 100px;
 	height: 2px;
 	padding: 10px;
 	text-decoration: none;
 	color: inherit;
-	z-index: 3;
+	z-index: 0;
 	font-size: 1.625rem;
 	margin-right: 6.25rem;
 	&:hover {
