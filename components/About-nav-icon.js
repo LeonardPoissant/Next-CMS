@@ -12,7 +12,7 @@ const AboutIcon = (props) => {
 		router.push("/about");
 	};
 
-	return <Wrapper onClick={() => handleNavigation()}>About</Wrapper>;
+	return <Wrapper onClick={() => handleNavigation()}>{props.about}</Wrapper>;
 };
 
 const Wrapper = styled.a`

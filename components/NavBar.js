@@ -1,25 +1,20 @@
+import react, { useContext } from "react";
+
 import styled from "styled-components";
 import SubNav from "./SubNav";
 import useComponentVisible from "../hooks/useComponentVisible";
-//import styles from "./NavBar.module.css";
+import TranslateIcon from "./TranslateIcon";
+import { useAppContext } from "../Contexts/LanguageContext";
 
 const NavBar = () => {
+	const value = useAppContext();
+
 	const { ref, isComponentVisible, setIsComponentVisible } =
 		useComponentVisible(false);
 
 	const openSubNav = () => {
 		setIsComponentVisible(!isComponentVisible);
 	};
-
-	/**	<Nav ref={ref} tabIndex="1">
-				<Button onClick={() => openSubNav()}></Button>
-				{isComponentVisible && (
-					<SubNav
-						setIsComponentVisible={setIsComponentVisible}
-						isComponentVisible={isComponentVisible}
-					/>
-				)}
-			</Nav> */
 
 	return (
 		<>
@@ -42,6 +37,10 @@ const NavBar = () => {
 						isComponentVisible={isComponentVisible}
 					/>
 				)}
+				<TranslateIcon
+					handleLanguage={value.handleLanguage}
+					languageSelected={value.languageSelected}
+				/>
 			</Nav>
 		</>
 	);
@@ -53,6 +52,7 @@ const Nav = styled.nav`
 	padding: 16px;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	width: 100%;
 	height: 63px;
 	background-color: white;

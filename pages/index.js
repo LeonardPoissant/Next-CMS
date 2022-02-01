@@ -1,11 +1,13 @@
-import Head, { useEffect, useRef } from "next/head";
+import Head from "next/head";
 import styled from "styled-components";
 import WorkExperienceComponent from "../components/WorkExperience";
-import { workExperiences } from "../workExperience/workExperience.json";
+
 import SideTitles from "../components/SideTitles";
 import Projects from "../components/Projects";
+import { useAppContext } from "../Contexts/LanguageContext";
 
 export default function Home({ metaTags }) {
+	const value = useAppContext();
 	const description = metaTags.data[0].description;
 
 	return (
@@ -44,17 +46,16 @@ export default function Home({ metaTags }) {
 
 			<Wrapper>
 				<SectionWrapper>
-					<SideTitles title="Work Experience" id="work-section" />
+					<SideTitles
+						title={value.languages.ExperienceTitle}
+						id="work-section"
+					/>
 					<WorkExperiencesWrapper>
-						{workExperiences.map((workExperience, index) => (
-							<WorkExperienceComponent
-								key={workExperience.title}
-								workExperience={workExperience}></WorkExperienceComponent>
-						))}
+						<WorkExperienceComponent></WorkExperienceComponent>
 					</WorkExperiencesWrapper>
 				</SectionWrapper>
 				<SectionWrapper>
-					<SideTitles title="Projects" id="project-section" />
+					<SideTitles title={value.languages.Projects} id="project-section" />
 					<Projects></Projects>
 				</SectionWrapper>
 			</Wrapper>

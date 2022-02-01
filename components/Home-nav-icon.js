@@ -11,7 +11,7 @@ const HomeNav = (props) => {
 		setIsComponentVisible(!isComponentVisible);
 	};
 
-	return <Wrapper onClick={() => handleNavigation()}>Home</Wrapper>;
+	return <Wrapper onClick={() => handleNavigation()}>{props.home}</Wrapper>;
 };
 
 const Wrapper = styled.a`
