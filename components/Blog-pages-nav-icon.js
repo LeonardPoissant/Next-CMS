@@ -11,7 +11,7 @@ const BlogIcon = (props) => {
 		router.push("/posts/1");
 	};
 
-	return <Wrapper onClick={() => handleNavigation()}>Blog</Wrapper>;
+	return <Wrapper onClick={() => handleNavigation()}>{props.blog}</Wrapper>;
 };
 
 const Wrapper = styled.a`

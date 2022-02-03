@@ -14,7 +14,7 @@ const SideTitles = (props) => {
 
 const WorkExperience = styled.a`
 	position: sticky;
-	isolation: isolate;
+	text-align: end;
 	z-index: 1;
 	top: 100px;
 	height: 2px;
@@ -24,6 +24,7 @@ const WorkExperience = styled.a`
 	z-index: 0;
 	font-size: 1.625rem;
 	margin-right: 6.25rem;
+	width: 200px;
 	&:hover {
 		cursor: pointer;
 	}
