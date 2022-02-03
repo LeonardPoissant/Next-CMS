@@ -89,10 +89,17 @@ const SectionWrapper = styled.section`
 	margin-right: 18.25rem;
 	justify-content: center;
 	width: 100%;
+	@media (max-width: 900px) {
+		margin-right: 0;
+		margin-top: 6.125rem;
+	}
 `;
 const WorkExperiencesWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	background: linear-gradient(#b4c4c3, #3a6864);
 	padding-bottom: 20px;
+	@media (max-width: 900px) {
+		width: 100%;
+	}
 `;

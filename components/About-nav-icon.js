@@ -24,6 +24,10 @@ const Wrapper = styled.a`
 		cursor: pointer;
 		text-decoration: underline;
 	}
+	@media (max-width: 900px) {
+		width: 2px;
+		margin: 0px;
+	}
 `;
 
 export default AboutIcon;

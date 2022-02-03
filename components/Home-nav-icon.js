@@ -25,9 +25,9 @@ const Wrapper = styled.a`
 		text-decoration: underline;
 	}
 
-	@media (max-width: 736px) {
-		margin-left: 56px;
-	} ;
+	@media (max-width: 900px) {
+		margin-left: 33px;
+	}
 `;
 
 export default HomeNav;

@@ -35,4 +35,9 @@ export default SubNav;
 const Wrapper = styled.div`
 	position: absolute;
 	margin-left: 90px;
+
+	@media (max-width: 900px) {
+		margin-top: 45px;
+		margin-left: 34px;
+	}
 `;
