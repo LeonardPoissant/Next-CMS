@@ -94,4 +94,5 @@ const WorkExperiencesWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	background: linear-gradient(#b4c4c3, #3a6864);
+	padding-bottom: 20px;
 `;

@@ -26,5 +26,6 @@ const TranslateButton = styled.button`
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+	text-decoration: underline;
 `;
 export default TranslateIcon;

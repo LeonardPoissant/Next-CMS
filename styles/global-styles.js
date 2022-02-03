@@ -38,9 +38,11 @@ const GlobalStyles = createGlobalStyle`
 	}
   
   ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+   
+  }
+
+  li{
+    margin:5px;
   }
 
   .line1{
@@ -100,6 +102,30 @@ const GlobalStyles = createGlobalStyle`
       
 }
   }
+
+  .separator-wrapper{
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+  
+  };
+
+  separator-wrapper-none{
+      display:none;
+  }
+
+  .separator{
+    width: 112px;
+    height: 47px;
+    border-bottom: 1px solid white;
+  }
+
+  .separator-none{
+    display:none;
+  }
+ 
+
   
   `;
 
