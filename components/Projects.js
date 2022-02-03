@@ -25,6 +25,9 @@ const Wrapper = styled.section`
 	flex-direction: column;
 
 	margin-bottom: 12.5rem;
+	@media (max-width: 900px) {
+		margin-bottom: 0;
+	}
 `;
 const ProjectWrapper = styled.section`
 	display: flex;

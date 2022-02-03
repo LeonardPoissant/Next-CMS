@@ -28,6 +28,10 @@ const WorkExperience = styled.a`
 	&:hover {
 		cursor: pointer;
 	}
+
+	@media (max-width: 900px) {
+		display: none;
+	}
 `;
 
 export default SideTitles;

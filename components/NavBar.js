@@ -56,13 +56,6 @@ const Nav = styled.nav`
 	width: 100%;
 	height: 63px;
 	background-color: white;
-
-	@media (max-width: 736px) {
-		margin-left: 6px;
-		background-color: white;
-		width: 97%;
-		display: flex;
-	}
 `;
 
 const Section = styled.div`
