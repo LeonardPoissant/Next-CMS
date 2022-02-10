@@ -1,21 +1,18 @@
 import styled from "styled-components";
-
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
 
-const SocialShare = (props) => {
-	console.log("props", props.encodedUrl);
-
+const SocialShare = ({ url }) => {
 	return (
 		<Wrapper>
 			<Ul>
 				<li>
-					<TwitterShareButton url={`${props.encodedUrl}`}>
+					<TwitterShareButton url={`${url}`}>
 						<Twitter round={true} />
 					</TwitterShareButton>
 				</li>
 				<li>
-					<FacebookShareButton url={`${props.encodedUrl}`}>
+					<FacebookShareButton url={`${url}`}>
 						<Facebook round={true} />
 					</FacebookShareButton>
 				</li>
@@ -25,7 +22,6 @@ const SocialShare = (props) => {
 };
 
 const Wrapper = styled.section`
-
  padding: 25px 0;
   }
 `;
@@ -38,7 +34,7 @@ align-items:center;
 list-style-type: none;
 
  }
-`;
+ `;
 
 const Twitter = styled(TwitterIcon)`
 margin:5px;

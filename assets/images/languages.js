@@ -112,15 +112,15 @@ let languages = {
 					"Developed with the Draft.js as a base for the text editor, Pantry ambitions to become a blog editor.",
 				links: [
 					{
-						href: "https://github.com/LeonardPoissant/TextEditor",
+						href: " https://github.com/LeonardPoissant/TextEditor",
 						name: "Editor",
 					},
 					{
-						href: "https://github.com/LeonardPoissant/next-pantry",
+						href: " https://github.com/LeonardPoissant/next-pantry",
 						name: "Front-End",
 					},
 					{
-						href: "https://github.com/LeonardPoissant/pantry-server",
+						href: " https://github.com/LeonardPoissant/pantry-server",
 						name: "Back-End",
 					},
 				],
@@ -129,13 +129,13 @@ let languages = {
 					"Stack used: React, Next.js, Type-Script,  Draft.js, Styled Components, Node.js, Express.js, Mongodb.",
 			},
 			{
-				name: "Quirkü",
+				name: "",
 				title: "Haiku-Generator, APP/API",
 				description:
 					"Created using a MERN stack, the haiku-generator, an APP/API is a contribution to conceiverdevice (https://www.conceiverdevice.com), “A collaborative and growing collection of quirky tools ...”. ",
 				links: [
 					{
-						href: "https://github.com/LeonardPoissant/Haiku-Generator",
+						href: " https://github.com/LeonardPoissant/Haiku-Generator",
 						name: "GitHub",
 					},
 				],
@@ -260,15 +260,15 @@ let languages = {
 					"Développée avec Draft.js pour base d’éditeur de texte , Pantry ambitionne devenir un éditeur de blogues.",
 				links: [
 					{
-						href: "https://github.com/LeonardPoissant/TextEditor",
+						href: " https://github.com/LeonardPoissant/TextEditor",
 						name: "Éditeur",
 					},
 					{
-						href: "https://github.com/LeonardPoissant/next-pantry",
+						href: " https://github.com/LeonardPoissant/next-pantry",
 						name: "Front-End",
 					},
 					{
-						href: "https://github.com/LeonardPoissant/pantry-server",
+						href: " https://github.com/LeonardPoissant/pantry-server",
 						name: "Back-End",
 					},
 				],
@@ -277,13 +277,13 @@ let languages = {
 					"Stack utilisé: React, Next.js, Type-Script,  Draft.js, Styled Components, Node.js, Express.js, Mongodb.",
 			},
 			{
-				name: "Quirkü",
+				name: "",
 				title: "Haiku-Generator, APP/API",
 				description:
 					"Développée avec le MERN stack, le  générateur de haïkus, une APP et une API, est une contribution à conceiverdevice (https://www.conceiverdevice.com), “A collaborative and growing collection of quirky tools ....”.",
 				links: [
 					{
-						href: "https://github.com/LeonardPoissant/Haiku-Generator",
+						href: " https://github.com/LeonardPoissant/Haiku-Generator",
 						name: "GitHub",
 					},
 				],

@@ -19,12 +19,10 @@ const Wrapper = styled.a`
 	width: 50px;
 	height: 50px;
 	text-align: center;
-
 	:hover {
 		cursor: pointer;
 		text-decoration: underline;
 	}
-
 	@media (max-width: 900px) {
 		margin-left: 33px;
 	}

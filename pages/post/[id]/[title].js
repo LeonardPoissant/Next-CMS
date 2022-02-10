@@ -1,176 +1,39 @@
-import { useState, useEffect } from "react";
 import Head from "next/head";
-import {
-	Editor,
-	EditorState,
-	CompositeDecorator,
-	convertFromRaw,
-} from "draft-js";
 import styled from "styled-components";
-import editorStyles from "../../../styles/editorStyles";
-import customStylemap from "../../../EditorStyles/CustomStyleMap";
-import mobileStyles from "../../../styles/editorStylesMobile";
-import {
-	YOUTUBE_PREFIX,
-	VIMEO_PREFIX,
-	YOUTUBEMATCH_URL,
-	VIMEOMATCH_URL,
-} from "../../../utils/media-players-regex";
 import { useRouter } from "next/router";
 import SocialShare from "../../../components/Social-share";
+import BreadCrumbs from "../../../components/Bread-crumb";
+import RenderedPost from "../../../components/Editor";
 
-/*export async function getStaticPaths() {
+export async function getServerSideProps(context) {
+	const params = context.params;
+	const id = context.params.id;
+	const title = context.params.title;
+	const previousPage = context?.req?.headers?.referer || "posts/1";
 
-    const res = await fetch(`https://quiet-peak-00993.herokuapp.com/test`);
-    const data = await res.json();
-
-    const paths = data.data.map((post, id) => {
-
-        return {
-            params: { id: post._id.toString(), title: post.post.title },
-        };
-    });
-    return { paths, fallback: false };
-
-
-};*/
-
-export async function getServerSideProps({ params }) {
-	// params contains the post `id`.
-	// If the route is like /posts/1, then params.id is 1
 	const res = await fetch(
-		`https://quiet-peak-00993.herokuapp.com/post/${params.id}/${params.title}`
+		`https://quiet-peak-00993.herokuapp.com/post/${id}/${title}`
 	);
+
 	const post = await res.json();
-	// Pass post data to the page via props
-	return { props: { post, params } };
+
+	return { props: { post, params, previousPage } };
 }
 
 const Post = (data) => {
 	const router = useRouter();
-	let postPath = router.asPath;
-	let fullUrl = "https://yearngroup.herokuapp.com" + postPath;
-	let encodedUrl = encodeURIComponent(
+	const postPath = router.asPath;
+	const fullUrl = "https://yearngroup.herokuapp.com" + postPath;
+	const encodedUrl = encodeURIComponent(
 		"https://yearngroup.herokuapp.com" + postPath
 	);
-	let test = decodeURI("https://yearngroup.herokuapp.com" + postPath);
+	const url = decodeURI(postPath);
+	const title = data.params.title;
+	const previousPage = data.previousPage;
+	const contentToConvert = data.post.data.post.convertedContent;
 
 	//----META Definitions----
-	let postDescription = data.post.data.post.description;
-
-	//----Editor state and styling----
-	const [editorState, setEditorState] = useState(EditorState.createEmpty());
-	let convertedContent = convertFromRaw(data.post.data.post.convertedContent);
-	const link = (props) => {
-		const { url } = props.contentState.getEntity(props.entityKey).getData();
-		return <a href={url}>{props.children}</a>;
-	};
-	const findLinkEntities = (contentBlock, callback, contentState) => {
-		contentBlock.findEntityRanges((character) => {
-			const entityKey = character.getEntity();
-			return (
-				entityKey !== null &&
-				contentState.getEntity(entityKey).getType() === "LINK"
-			);
-		}, callback);
-	};
-	const decorator = new CompositeDecorator([
-		{
-			strategy: findLinkEntities,
-			component: link,
-		},
-	]);
-
-	useEffect(() => {
-		setEditorState(EditorState.createWithContent(convertedContent, decorator));
-	}, []);
-
-	const onChange = (editorState) => {
-		setEditorState(editorState);
-	};
-
-	const getSrc = ({ src }) => {
-		const isYoutube = (url) => YOUTUBEMATCH_URL.test(url);
-		const isVimeo = (url) => VIMEOMATCH_URL.test(url);
-		const getYoutubeSrc = (url) => {
-			let id = "";
-			if (!url.match(YOUTUBEMATCH_URL) === undefined) {
-				return console.log("NOT YOUTUBE");
-			}
-
-			if (url.match(YOUTUBEMATCH_URL) != null) {
-				id = url && url.match(YOUTUBEMATCH_URL)[1];
-
-				return {
-					srcID: id,
-					srcType: "youtube",
-					url,
-				};
-			}
-		};
-		const getVimeoSrc = (url) => {
-			if (!url.match(VIMEOMATCH_URL)) {
-				return;
-			}
-			const id = url.match(VIMEOMATCH_URL)[3];
-			return {
-				srcID: id,
-				srcType: "vimeo",
-				url,
-			};
-		};
-
-		if (isYoutube(src)) {
-			const { srcID } = getYoutubeSrc(src);
-
-			return `${YOUTUBE_PREFIX}${srcID}`;
-		}
-		if (isVimeo(src)) {
-			const { srcID } = getVimeoSrc(src);
-			return `${VIMEO_PREFIX}${srcID}`;
-		}
-		return undefined;
-	};
-
-	const mediaBlockRender = (block) => {
-		if (block.getType() === "atomic") {
-			return {
-				component: Media,
-				editable: false,
-			};
-		}
-		return null;
-	};
-
-	const Image = (props) => {
-		if (!!props.src) {
-			return <img src={props.src} alt={props.src} />;
-		}
-		return null;
-	};
-
-	const Video = (props) => {
-		if (!!props.src) {
-			return <iframe controls src={props.src} title={props.src} />;
-		}
-		return null;
-	};
-
-	const Media = (props) => {
-		const entity = props.contentState.getEntity(props.block.getEntityAt(0));
-		const { src } = entity.getData();
-		getSrc(src);
-		const type = entity.getType();
-
-		let media;
-
-		if (type === "image") {
-			media = <Image src={src} />;
-		} else if (type === "VIDEOTYPE") {
-			media = <Video src={src} crossorigin="anonymous" />;
-		}
-		return media;
-	};
+	const postDescription = data.post.data.post.description;
 
 	return (
 		<>
@@ -215,22 +78,16 @@ const Post = (data) => {
 			</Head>
 
 			<Wrapper>
-				<EditorWrapper className="EDITORWRAPPER">
-					<Editor
-						blockRendererFn={mediaBlockRender}
-						customStyleMap={customStylemap}
-						editorState={editorState}
-						onChange={onChange}
-						readOnly={true}></Editor>
-				</EditorWrapper>
+				<BreadCrumbs title={title} previousPage={previousPage} />
+				<RenderedPost contentToConvert={contentToConvert}></RenderedPost>
 			</Wrapper>
-			<SocialShare encodedUrl={test} />
+			<SocialShare encodedUrl={url} />
 		</>
 	);
 };
 
 const Wrapper = styled.section`
-	min-height: 100vh;
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -238,33 +95,6 @@ const Wrapper = styled.section`
 	padding-top: 100px;
 	@media (max-width: 736px) {
 		//width:fit-content;
-	}
-`;
-
-const EditorWrapper = styled.div`
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	hyphens: auto;
-	border-style: solid;
-	border-color: rgb(161, 161, 161);
-	border-width: 1px;
-
-	height: max-content;
-	min-height: fit-content;
-	@media (min-width: 736px) {
-		max-width: 600px;
-
-		& {
-			${editorStyles}
-		}
-	}
-
-	@media (max-width: 736px) {
-		max-height: 75%;
-		margin: 5px;
-		max-width: 404px;
-		& {
-			${mobileStyles}
-		}
 	}
 `;
 

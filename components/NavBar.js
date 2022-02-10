@@ -1,5 +1,3 @@
-import react, { useContext } from "react";
-
 import styled from "styled-components";
 import SubNav from "./SubNav";
 import useComponentVisible from "../hooks/useComponentVisible";
