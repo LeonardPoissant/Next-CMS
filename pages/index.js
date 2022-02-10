@@ -50,13 +50,15 @@ export default function Home({ metaTags }) {
 						title={value.languages.ExperienceTitle}
 						id="work-section"
 					/>
+					<MobileTitle>{value.languages.ExperienceTitle}</MobileTitle>
 					<WorkExperiencesWrapper>
 						<WorkExperienceComponent></WorkExperienceComponent>
 					</WorkExperiencesWrapper>
 				</SectionWrapper>
 				<SectionWrapper>
 					<SideTitles title={value.languages.Projects} id="project-section" />
-					<Projects></Projects>
+					<MobileTitle>{value.languages.Projects}</MobileTitle>
+					<Projects />
 				</SectionWrapper>
 			</Wrapper>
 		</>
@@ -92,6 +94,7 @@ const SectionWrapper = styled.section`
 	@media (max-width: 900px) {
 		margin-right: 0;
 		margin-top: 6.125rem;
+		flex-direction: column;
 	}
 `;
 const WorkExperiencesWrapper = styled.div`
@@ -101,5 +104,16 @@ const WorkExperiencesWrapper = styled.div`
 	padding-bottom: 20px;
 	@media (max-width: 900px) {
 		width: 100%;
+	}
+`;
+
+const MobileTitle = styled.h2`
+	display: none;
+	text-align: center;
+	@media (max-width: 900px) {
+		width: 100%;
+		display: inline;
+		padding-bottom: 40px;
+		margin-top: -20px;
 	}
 `;
