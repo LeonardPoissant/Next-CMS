@@ -9,19 +9,19 @@ const BreadCrumbs = (props) => {
 
 	return (
 		<Wrapper>
-			<PreviousPage
+			<BreadCrumb
 				href={{
 					pathname: `/posts/1`,
 				}}>
 				{value.languages.Blog} <span>&gt;</span>
-			</PreviousPage>
-			<PreviousPage
+			</BreadCrumb>
+			<BreadCrumb
 				href={{
 					pathname: `/posts/${previousPage}`,
 				}}>
 				page {previousPage} <span>&gt;</span>
-			</PreviousPage>
-			<Title>{title}</Title>
+			</BreadCrumb>
+			<LastBreadCrumb>{title}</LastBreadCrumb>
 		</Wrapper>
 	);
 };
@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 	margin: 20px 0;
 `;
 
-const PreviousPage = styled.a`
+const BreadCrumb = styled.a`
 	text-decoration: none;
 	color: rgb(23, 91, 176);
 	margin: 5px;
@@ -45,7 +45,7 @@ const PreviousPage = styled.a`
 	}
 `;
 
-const Title = styled.div`
+const LastBreadCrumb = styled.div`
 	margin: 5px;
 `;
 export default BreadCrumbs;
