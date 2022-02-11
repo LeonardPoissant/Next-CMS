@@ -9,7 +9,7 @@ export async function getServerSideProps(context) {
 	const params = context.params;
 	const id = context.params.id;
 	const title = context.params.title;
-	const previousPage = context?.req?.headers?.referer || "posts/1";
+	const previousPage = context?.req?.headers?.referer || null;
 
 	const res = await fetch(
 		`https://quiet-peak-00993.herokuapp.com/post/${id}/${title}`
