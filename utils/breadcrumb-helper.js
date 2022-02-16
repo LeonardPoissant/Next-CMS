@@ -4,7 +4,7 @@ export const sanitizeTitle = (string) => {
 };
 
 export const sanitizeUrl = (string) => {
-	if (string.includes("posts/")) {
+	if (string?.includes("posts/")) {
 		return string.slice(-1);
 	} else return "1";
 };
