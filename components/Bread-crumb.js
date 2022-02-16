@@ -1,27 +1,48 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { useAppContext } from "../Contexts/LanguageContext";
+import Link from "next/link";
 import { sanitizeUrl, sanitizeTitle } from "../utils/breadcrumb-helper";
+import { useRouter } from "next/router";
 
 const BreadCrumbs = (props) => {
+	const [goToMainBlogPage, setGoToMainBlogPage] = useState(false);
+	const router = useRouter();
 	const value = useAppContext();
 	const title = sanitizeTitle(props.title);
 	const previousPage = sanitizeUrl(props.previousPage);
+	const handleNavigation = () => {
+		goToMainBlogPage
+			? router.push("/posts/1")
+			: router.push(`/posts/${previousPage}`);
+	};
+
+	const renderBreadCrumb = () => {
+		if (props.previousPage === null) {
+			return (
+				<BreadCrumb onClick={() => handleNavigation(setGoToMainBlogPage(true))}>
+					{value.languages.Blog} <span>&gt;</span>
+				</BreadCrumb>
+			);
+		} else {
+			return (
+				<>
+					<BreadCrumb
+						onClick={() => handleNavigation(setGoToMainBlogPage(true))}>
+						{value.languages.Blog} <span>&gt;</span>
+					</BreadCrumb>
+					<BreadCrumb onClick={() => handleNavigation()}>
+						page {previousPage} <span>&gt;</span>
+					</BreadCrumb>
+				</>
+			);
+		}
+	};
 
 	return (
 		<Wrapper>
-			<PreviousPage
-				href={{
-					pathname: `/posts/1`,
-				}}>
-				{value.languages.Blog} <span>&gt;</span>
-			</PreviousPage>
-			<PreviousPage
-				href={{
-					pathname: `/posts/${previousPage}`,
-				}}>
-				page {previousPage} <span>&gt;</span>
-			</PreviousPage>
-			<Title>{title}</Title>
+			{renderBreadCrumb()}
+			<LastBreadCrumb>{title}</LastBreadCrumb>
 		</Wrapper>
 	);
 };
@@ -33,7 +54,7 @@ const Wrapper = styled.div`
 	margin: 20px 0;
 `;
 
-const PreviousPage = styled.a`
+const BreadCrumb = styled.a`
 	text-decoration: none;
 	color: rgb(23, 91, 176);
 	margin: 5px;
@@ -45,7 +66,7 @@ const PreviousPage = styled.a`
 	}
 `;
 
-const Title = styled.div`
+const LastBreadCrumb = styled.div`
 	margin: 5px;
 `;
 export default BreadCrumbs;
