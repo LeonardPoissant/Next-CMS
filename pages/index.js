@@ -4,10 +4,10 @@ import WorkExperienceComponent from "../components/WorkExperience";
 
 import SideTitles from "../components/SideTitles";
 import Projects from "../components/Projects";
-import { useAppContext } from "../Contexts/LanguageContext";
+import { useLanguageContext } from "../Contexts/LanguageContext";
 
 export default function Home({ metaTags }) {
-	const value = useAppContext();
+	const value = useLanguageContext();
 	const description = metaTags.data[0].description;
 
 	return (

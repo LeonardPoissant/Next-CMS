@@ -8,14 +8,18 @@ const BlogIcon = (props) => {
 
 	const handleNavigation = () => {
 		setIsComponentVisible(!isComponentVisible);
-		router.push("/posts/1");
 	};
 
-	return <Wrapper onClick={() => handleNavigation()}>{props.blog}</Wrapper>;
+	return (
+		<Wrapper onClick={() => handleNavigation()} href="/posts/1">
+			{props.blog}
+		</Wrapper>
+	);
 };
 
 const Wrapper = styled.a`
 	text-decoration: none;
+	color: black;
 
 	width: 50px;
 	height: 50px;

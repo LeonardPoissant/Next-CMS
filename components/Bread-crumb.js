@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { useAppContext } from "../Contexts/LanguageContext";
+import { useLanguageContext } from "../Contexts/LanguageContext";
+import { useRoutingContext } from "../Contexts/RoutingContext";
 import Link from "next/link";
 import { sanitizeUrl, sanitizeTitle } from "../utils/breadcrumb-helper";
 import { useRouter } from "next/router";
@@ -8,31 +9,26 @@ import { useRouter } from "next/router";
 const BreadCrumbs = (props) => {
 	const [goToMainBlogPage, setGoToMainBlogPage] = useState(false);
 	const router = useRouter();
-	const value = useAppContext();
+	const currentLanguage = useLanguageContext();
+	const value = useRoutingContext();
 	const title = sanitizeTitle(props.title);
-	const previousPage = sanitizeUrl(props.previousPage);
-	const handleNavigation = () => {
-		goToMainBlogPage
-			? router.push("/posts/1")
-			: router.push(`/posts/${previousPage}`);
-	};
+	const previousRoute = sanitizeUrl(value.useRouteUrlHistory.previousRoute);
 
 	const renderBreadCrumb = () => {
-		if (props.previousPage === null) {
+		if (!previousRoute) {
 			return (
-				<BreadCrumb onClick={() => handleNavigation(setGoToMainBlogPage(true))}>
-					{value.languages.Blog} <span>&gt;</span>
+				<BreadCrumb href={"/posts/1"}>
+					{currentLanguage.languages.Blog} <span>&gt;</span>
 				</BreadCrumb>
 			);
 		} else {
 			return (
 				<>
-					<BreadCrumb
-						onClick={() => handleNavigation(setGoToMainBlogPage(true))}>
-						{value.languages.Blog} <span>&gt;</span>
+					<BreadCrumb href={"/posts/1"}>
+						{currentLanguage.languages.Blog} <span>&gt;</span>
 					</BreadCrumb>
-					<BreadCrumb onClick={() => handleNavigation()}>
-						page {previousPage} <span>&gt;</span>
+					<BreadCrumb href={`/posts/${previousRoute}`}>
+						page {previousRoute} <span>&gt;</span>
 					</BreadCrumb>
 				</>
 			);

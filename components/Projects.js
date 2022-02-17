@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { useAppContext } from "../Contexts/LanguageContext";
+import { useLanguageContext } from "../Contexts/LanguageContext";
 
 const Projects = () => {
-	const value = useAppContext();
+	const value = useLanguageContext();
 	return (
 		<Wrapper id="project-section">
 			{value.languages.ProjectsSection.map((project, index) => (

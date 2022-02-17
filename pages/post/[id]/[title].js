@@ -9,14 +9,6 @@ export async function getServerSideProps(context) {
 	const params = context.params;
 	const id = context.params.id;
 	const title = context.params.title;
-	const previousPage = context?.req?.headers?.referer || null;
-
-	console.log("CONTEXT", context?.req?.headers);
-
-	const test = context?.req?.headers?.referer;
-	const headers = context?.req?.headers;
-
-	console.log("previus page", previousPage);
 
 	const res = await fetch(
 		`https://quiet-peak-00993.herokuapp.com/post/${id}/${title}`
@@ -24,22 +16,15 @@ export async function getServerSideProps(context) {
 
 	const post = await res.json();
 
-	return { props: { post, params, previousPage, test, headers } };
+	return { props: { post, params } };
 }
 
 const Post = (data) => {
 	const router = useRouter();
 	const postPath = router.asPath;
-	const fullUrl = "https://yearngroup.herokuapp.com" + postPath;
-	const encodedUrl = encodeURIComponent(
-		"https://yearngroup.herokuapp.com" + postPath
-	);
 	const url = decodeURI(postPath);
 	const title = data.params.title;
-	const previousPage = data.previousPage;
 	const contentToConvert = data.post.data.post.convertedContent;
-	console.log("REQ SHIT", data.test);
-	console.log("headers", data.headers);
 
 	//----META Definitions----
 	const postDescription = data.post.data.post.description;
@@ -87,7 +72,7 @@ const Post = (data) => {
 			</Head>
 
 			<Wrapper>
-				<BreadCrumbs title={title} previousPage={previousPage} />
+				<BreadCrumbs title={title} />
 				<RenderedPost contentToConvert={contentToConvert}></RenderedPost>
 			</Wrapper>
 			<SocialShare encodedUrl={url} />
