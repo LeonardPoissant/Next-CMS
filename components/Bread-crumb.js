@@ -1,14 +1,9 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { useLanguageContext } from "../Contexts/LanguageContext";
 import { useRoutingContext } from "../Contexts/RoutingContext";
-import Link from "next/link";
 import { sanitizeUrl, sanitizeTitle } from "../utils/breadcrumb-helper";
-import { useRouter } from "next/router";
 
 const BreadCrumbs = (props) => {
-	const [goToMainBlogPage, setGoToMainBlogPage] = useState(false);
-	const router = useRouter();
 	const currentLanguage = useLanguageContext();
 	const value = useRoutingContext();
 	const title = sanitizeTitle(props.title);

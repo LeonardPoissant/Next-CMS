@@ -9,7 +9,6 @@ export function RoutingContext({ children }) {
 
 		const handleBeforeHistoryChange = (url) => {
 			const [nextUrl] = url?.split("?") || [];
-
 			if (nextUrl !== router.asPath) {
 				setPreviousRouter(router.asPath);
 			}
