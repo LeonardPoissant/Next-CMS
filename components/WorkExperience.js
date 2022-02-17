@@ -1,8 +1,8 @@
-import { useAppContext } from "../Contexts/LanguageContext";
+import { useLanguageContext } from "../Contexts/LanguageContext";
 import styled from "styled-components";
 
 const WorkExperienceComponent = (props) => {
-	const value = useAppContext();
+	const value = useLanguageContext();
 	return (
 		<>
 			<section>

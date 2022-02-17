@@ -2,10 +2,10 @@ import styled from "styled-components";
 import SubNav from "./SubNav";
 import useComponentVisible from "../hooks/useComponentVisible";
 import TranslateIcon from "./TranslateIcon";
-import { useAppContext } from "../Contexts/LanguageContext";
+import { useLanguageContext } from "../Contexts/LanguageContext";
 
 const NavBar = () => {
-	const value = useAppContext();
+	const value = useLanguageContext();
 
 	const { ref, isComponentVisible, setIsComponentVisible } =
 		useComponentVisible(false);

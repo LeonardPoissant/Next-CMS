@@ -15,6 +15,10 @@ const BlogPostBanner = (props) => {
 		setThumbnailCategory(props.category);
 	}, []);
 
+	const handleNavigation = () => {
+		router.push(`/post/${props.id}/${props.title}`);
+	};
+
 	return (
 		<li tabIndex={0}>
 			<StyledLink

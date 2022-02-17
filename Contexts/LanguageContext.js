@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import languages from "../assets/images/languages";
 const AppContext = createContext();
 
-export function AppWrapper({ children }) {
+export function LanguageContext({ children }) {
 	const [languageSelected, setLanguageSelected] = useState("EN");
 	const language = languages;
 	const handleLanguage = () => {
@@ -24,6 +24,6 @@ export function AppWrapper({ children }) {
 	);
 }
 
-export function useAppContext() {
+export function useLanguageContext() {
 	return useContext(AppContext);
 }
