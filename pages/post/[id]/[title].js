@@ -11,13 +11,20 @@ export async function getServerSideProps(context) {
 	const title = context.params.title;
 	const previousPage = context?.req?.headers?.referer || null;
 
+	console.log("CONTEXT", context?.req?.headers);
+
+	const test = context?.req?.headers?.referer;
+	const headers = context?.req?.headers;
+
+	console.log("previus page", previousPage);
+
 	const res = await fetch(
 		`https://quiet-peak-00993.herokuapp.com/post/${id}/${title}`
 	);
 
 	const post = await res.json();
 
-	return { props: { post, params, previousPage } };
+	return { props: { post, params, previousPage, test, headers } };
 }
 
 const Post = (data) => {
@@ -31,6 +38,8 @@ const Post = (data) => {
 	const title = data.params.title;
 	const previousPage = data.previousPage;
 	const contentToConvert = data.post.data.post.convertedContent;
+	console.log("REQ SHIT", data.test);
+	console.log("headers", data.headers);
 
 	//----META Definitions----
 	const postDescription = data.post.data.post.description;
