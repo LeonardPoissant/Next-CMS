@@ -3,7 +3,22 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import SocialShare from "../../../components/Social-share";
 import BreadCrumbs from "../../../components/Bread-crumb";
-import RenderedPost from "../../../components/Editor";
+import TextEditor from "../../../components/Editor";
+import { useState, useEffect } from "react";
+import { useEditorContext } from "../../../Contexts/EditorContext";
+import {
+	EditorState,
+	RichUtils,
+	AtomicBlockUtils,
+	CompositeDecorator,
+	ContentState,
+	convertToRaw,
+	convertFromRaw,
+	ContentBlock,
+	DraftHandleValue,
+	DraftEditorCommand,
+	Modifier,
+} from "draft-js";
 
 export async function getServerSideProps(context) {
 	const params = context.params;
@@ -25,6 +40,8 @@ const Post = (data) => {
 	const url = decodeURI(postPath);
 	const title = data.params.title;
 	const contentToConvert = data.post.data.post.convertedContent;
+
+	console.log("contet", contentToConvert);
 
 	//----META Definitions----
 	const postDescription = data.post.data.post.description;
@@ -73,7 +90,9 @@ const Post = (data) => {
 
 			<Wrapper>
 				<BreadCrumbs title={title} />
-				<RenderedPost contentToConvert={contentToConvert}></RenderedPost>
+				<TextEditor
+					contentToConvert={contentToConvert}
+					readOnly={true}></TextEditor>
 			</Wrapper>
 			<SocialShare encodedUrl={url} />
 		</>
