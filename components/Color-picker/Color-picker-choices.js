@@ -10,7 +10,7 @@ const SecondaryPicker = (props) => {
 	const onToggle = props.onToggle;
 
 	const isVisible = props.isVisible;
-	console.log("ISVISIBLE@ND", isVisible);
+
 	return (
 		<>
 			{isVisible ? (

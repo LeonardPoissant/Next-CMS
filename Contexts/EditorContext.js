@@ -17,6 +17,12 @@ import customStyleMap from "../utils/EditorUtils/EditorStyles/CustomStyleMap";
 
 import getVideo from "../utils/EditorUtils/Media-urls";
 const AppContext = createContext();
+const api_url =
+	process.env.NEXT_PUBLIC_DEVELOPMENT_API_URL ||
+	process.env.NEXT_PUBLIC_PRODUCTION_API_URL;
+
+import authHeader from "../services/auth-header";
+import { useRouter } from "next/router";
 
 export function EditorContext({ children }) {
 	const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -57,6 +63,8 @@ export function EditorContext({ children }) {
 	const [openFsDropdown, setOpenFsDropdown] = useState(false);
 
 	const [openColorPicker, setOpenColorPicker] = useState(false);
+	const [keywords, setKeywords] = useState("");
+	const router = useRouter();
 
 	const handleChoosePrimaryColor = (i) => {
 		setSelectedIndex(i);
@@ -66,7 +74,7 @@ export function EditorContext({ children }) {
 		e.preventDefault();
 		setColor({ background: colors.hex });
 		//Object.assign(customStyleMap, { color_test: { color: colors.hex } })
-		console.log("123", customStyleMap);
+
 		const selection = editorState.getSelection();
 
 		// Let's just allow one color at a time. Turn off all active colors.
@@ -87,7 +95,7 @@ export function EditorContext({ children }) {
     
         // Unset style override for current color.
         if (!selection.isCollapsed()) {
-          console.log('here???')
+      
           nextEditorState = currentStyle.reduce((state, color) => {
             console.log('COLRO', color)
             return RichUtils.toggleInlineStyle(state, color);
@@ -161,31 +169,31 @@ export function EditorContext({ children }) {
 	};
 
 	const postArticle = (e) => {
-		e.stopPropagation();
+		//e.stopPropagation();
+		e.preventDefault();
 		setIsLoading(!loading);
-		sessionStorage.clear();
 
 		let contentState = editorState.getCurrentContent();
 		let convertedContent = convertToRaw(contentState);
-		let date = new Date();
 
-		fetch("/test", {
+		fetch(`${api_url}/create-post`, {
 			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				Accept: "application/json",
-			},
+			headers: authHeader(),
 			body: JSON.stringify({
 				title,
 				description,
 				category,
-				date,
 				convertedContent,
 			}),
 		})
-			.then((res) => res.json())
+			.then((res) => {
+				console.log("res", res);
+				return res.json();
+			})
 			.then((db) => {
+				console.log("promises resolved", db);
 				setIsLoading(false);
+				router.push("/posts/1");
 			})
 			.catch((err) => {
 				console.log(err);
@@ -330,7 +338,6 @@ export function EditorContext({ children }) {
 				colorStyle
 			);
 		}
-		console.log("NEXT", nextEditorState);
 
 		//onChange(RichUtils.toggleInlineStyle(editorState, colorStyle))
 		onChange(nextEditorState);
@@ -372,7 +379,6 @@ export function EditorContext({ children }) {
 				textAlignement
 			);
 		}
-		console.log("NEXT", nextEditorState);
 
 		onChange(RichUtils.toggleInlineStyle(editorState, "center"));
 		//onChange(nextEditorState);
@@ -440,7 +446,7 @@ export function EditorContext({ children }) {
 		);
 
 		const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-		console.log(entityKey);
+
 		const newEditorState = EditorState.set(editorState, {
 			currentContent: contentStateWithEntity,
 		});
@@ -513,7 +519,7 @@ export function EditorContext({ children }) {
 				{ src: src + videoId }
 			);
 			const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-			console.log("entitityKey", entityKey);
+
 			const newEditorState = EditorState.set(
 				editorState,
 				{ currentContent: contentStateWithEntity },
@@ -549,12 +555,6 @@ export function EditorContext({ children }) {
 		setPromptForURL(!promptForURL);
 
 		setActive(!active);
-	};
-
-	const test12 = (e) => {
-		console.log("e", e);
-
-		console.log("erhhh");
 	};
 
 	return (
@@ -595,14 +595,9 @@ export function EditorContext({ children }) {
 				setDescription,
 				category,
 				setCategory,
-				pageNumber,
-				page,
-
-				setPage,
-				test,
 
 				toggleFontsize,
-				test12,
+
 				focusEditor,
 				toggleTextColor,
 				handleChangeComplete,
@@ -618,6 +613,8 @@ export function EditorContext({ children }) {
 				handleChoosePrimaryColor,
 				decorator,
 				loading,
+				keywords,
+				setKeywords,
 			}}>
 			{children}
 		</AppContext.Provider>

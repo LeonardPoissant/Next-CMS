@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-const BlogNav = (props) => {
-	let arrayOfPages = props.props.arrayOfPages.data;
-
+const BlogNav = ({ arrayOfPages }) => {
 	return (
 		<Wrapper>
 			<span>Pages</span>

@@ -71,7 +71,7 @@ export async function getStaticProps() {
 	// Call an external API endpoint to get posts
 	const res = await fetch("https://quiet-peak-00993.herokuapp.com/meta");
 	let metaTags;
-	console.log("status", res.status);
+
 	if (res.status !== 503) {
 		metaTags = await res?.json();
 	}

@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 const Animation = (props) => {
-	console.log(props);
-
 	return (
 		<>
 			{props.isVisible ? (

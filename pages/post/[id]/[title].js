@@ -4,30 +4,15 @@ import { useRouter } from "next/router";
 import SocialShare from "../../../components/Social-share";
 import BreadCrumbs from "../../../components/Bread-crumb";
 import TextEditor from "../../../components/Editor";
-import { useState, useEffect } from "react";
-import { useEditorContext } from "../../../Contexts/EditorContext";
-import {
-	EditorState,
-	RichUtils,
-	AtomicBlockUtils,
-	CompositeDecorator,
-	ContentState,
-	convertToRaw,
-	convertFromRaw,
-	ContentBlock,
-	DraftHandleValue,
-	DraftEditorCommand,
-	Modifier,
-} from "draft-js";
 
 export async function getServerSideProps(context) {
+	const api_url =
+		process.env.DEVELOPMENT_API_URL || process.env.PRODUCTION_API_URL;
 	const params = context.params;
 	const id = context.params.id;
 	const title = context.params.title;
 
-	const res = await fetch(
-		`https://quiet-peak-00993.herokuapp.com/post/${id}/${title}`
-	);
+	const res = await fetch(`${api_url}/post/${id}/${title}`);
 
 	const post = await res.json();
 
@@ -40,8 +25,6 @@ const Post = (data) => {
 	const url = decodeURI(postPath);
 	const title = data.params.title;
 	const contentToConvert = data.post.data.post.convertedContent;
-
-	console.log("contet", contentToConvert);
 
 	//----META Definitions----
 	const postDescription = data.post.data.post.description;

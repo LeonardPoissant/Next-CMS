@@ -35,6 +35,8 @@ const TextEditor = (props) => {
 	} = useEditorContext();
 
 	const editor = useRef(null);
+	let readOnly = props.readOnly;
+
 	//const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
 	/*editor.current.blocks = editor.current.blocks.map((b, i) => ({
@@ -61,31 +63,49 @@ const TextEditor = (props) => {
 	};
 
 	return (
-		<EditorWrapper className="EDITORWRAPPER" onClick={() => getFocus()}>
-			<Editor
-				blockRendererFn={mediaBlockRender}
-				customStyleMap={customStyleMap}
-				editorState={editorState}
-				onChange={onChange}
-				handleKeyCommand={handleKeyCommand}
-				decorators={decorator}
-				spellCheck={true}
-				ref={editor}
-				readOnly={props.readOnly}></Editor>
-		</EditorWrapper>
+		<>
+			<EditorWrapper
+				className="EDITORWRAPPER"
+				onClick={() => getFocus()}
+				readOnly={readOnly}>
+				<Editor
+					blockRendererFn={mediaBlockRender}
+					customStyleMap={customStyleMap}
+					editorState={editorState}
+					onChange={onChange}
+					handleKeyCommand={handleKeyCommand}
+					decorators={decorator}
+					spellCheck={true}
+					ref={editor}
+					readOnly={readOnly}></Editor>
+			</EditorWrapper>
+		</>
 	);
 };
 
 const EditorWrapper = styled.div`
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	hyphens: auto;
-	border-style: solid;
-	border-color: rgb(161, 161, 161);
-	border-width: 1px;
-	height: max-content;
-	min-height: fit-content;
+	${(props) =>
+		props.readOnly
+			? {
+					boxShadow:
+						"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);",
+					borderColor: "pink",
+					borderWidth: "10px",
+					minHeight: "fit-content",
+					maxWidth: "600px",
+			  }
+			: ""};
+	//box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	//hyphens: auto;
+	//border-style: solid;
+	//border-color: pink;
+	//border-color: rgb(161, 161, 161);
+	height: fit-content;
+	//min-height: 100vh;
+	//min-height: fit-content;
+	//min-height: ${(props) => (props.readOnly ? "fit-content" : "100vh")};
 	@media (min-width: 736px) {
-		max-width: 600px;
+		//	max-width: 600px;
 
 		& {
 			${editorStyles}

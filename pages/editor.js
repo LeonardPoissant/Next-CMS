@@ -2,9 +2,22 @@ import TextEditor from "../components/Editor";
 import ToolBar from "../components/Toolbar";
 import styled from "styled-components";
 import draftJsCss from "../utils/EditorUtils/EditorStyles/Editor-css";
-import { useRef, useEffect } from "react";
+import EditorDrawer from "../components/Editor-drawer";
+import { ModalContext } from "../Contexts/ModalContext";
 import { useEditorContext } from "../Contexts/EditorContext";
+
 const EditorPage = () => {
+	const {
+		title,
+		setTitle,
+		category,
+		setCategory,
+		description,
+		setDescription,
+		keywords,
+		setKeywords,
+		postArticle,
+	} = useEditorContext();
 	/*const { openFsDropdown, openColorPicker, selectedIndex } = useEditorContext();
 	const editor = useRef(null);
 
@@ -27,31 +40,62 @@ const EditorPage = () => {
 		],
 	};
 	return (
-		<Wrapper>
-			<ToolBar></ToolBar>
-			<TextArea>
-				<TextEditor contentToConvert={contentToConvert}></TextEditor>
-			</TextArea>
-		</Wrapper>
+		<ModalContext>
+			<MainWrapper>
+				<Wrapper>
+					<ToolBar></ToolBar>
+					<TextArea>
+						<TextEditor
+							contentToConvert={contentToConvert}
+							readOnly={false}></TextEditor>
+					</TextArea>
+				</Wrapper>
+				<EditorDrawer
+					props={{
+						title,
+						setTitle,
+						category,
+						setCategory,
+						description,
+						setDescription,
+						keywords,
+						setKeywords,
+						postArticle,
+					}}
+				/>
+			</MainWrapper>
+		</ModalContext>
 	);
 };
 
-const Wrapper = styled.div`
+const MainWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	min-height: calc(100vh - (63px + 140px));
+`;
+
+const Wrapper = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 	flex-direction: column;
-	height: 100vh;
+	width: 100%;
+	height: 500px;
 `;
 const TextArea = styled.div`
-	height: 250px;
 	overflow-y: auto;
-	width: 500px;
-	//overflow-wrap: anywhere ;
+	width: 1000px;
+	hyphens: auto;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	hyphens: auto;
 	border-style: solid;
 	border-color: rgb(161, 161, 161);
 	border-width: 1px;
+
+	padding-bottom: 5px;
+
+	height: calc(100vh - (63px + 140px));
 	& {
 		${draftJsCss}
 	}

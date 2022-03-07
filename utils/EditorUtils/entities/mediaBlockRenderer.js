@@ -46,14 +46,10 @@ const Video = (props) => {
 
 const Media = (props) => {
 	let entity;
-	console.log(
-		"ENTITY",
-		props.contentState.getEntity(props.block.getEntityAt(0))
-	);
+
 	if (props.contentState.getEntity(props.block.getEntityAt(0)) === null) {
 		entity = undefined;
 	} else if (props.contentState.getEntity(props.block.getEntityAt(0)) != null) {
-		console.log("NOT NULL");
 		entity = props.contentState.getEntity(props.block.getEntityAt(0));
 	}
 

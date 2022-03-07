@@ -1,28 +1,48 @@
 import styled from "styled-components";
 import Posts from "../../components/Posts";
 import BlogNav from "../../components/Blog-pages-nav";
+import BlogDrawer from "../../components/Blog-drawer";
+import { ModalContext } from "../../Contexts/ModalContext";
 
-const PostPage = (props) => {
+const PostsPage = (props) => {
 	return (
-		<Wrapper>
-			<UlWrapper>
-				<Posts posts={props} />
-			</UlWrapper>
-			<BlogNav props={props} />
-		</Wrapper>
+		<ModalContext>
+			<MainWrapper>
+				<BlogDrawer />
+
+				<Wrapper>
+					{props ? (
+						<>
+							<UlWrapper>
+								<Posts posts={props.posts.data} />
+							</UlWrapper>
+							<BlogNav arrayOfPages={props.arrayOfPages.data} />
+						</>
+					) : (
+						<div>Seems like I'm out of juice</div>
+					)}
+				</Wrapper>
+			</MainWrapper>
+		</ModalContext>
 	);
 };
 
+const MainWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: calc(100vh - (63px + 140px));
+`;
 const Wrapper = styled.section`
 	padding-top: 100px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	min-height: calc(100vh - (63px + 140px));
+	width: 100%;
 	padding: 30px;
 	@media only screen and (max-width: 667px) {
-		width: 100%;
+		width: 50%;
 	}
 `;
 
@@ -31,16 +51,29 @@ const UlWrapper = styled.ul`
 `;
 
 export async function getServerSideProps({ params }) {
-	const res = await fetch(
-		`https://quiet-peak-00993.herokuapp.com/posts/${params.id}`
-	);
-	const posts = await res.json();
-	const getArrayOfPages = await fetch(
-		"https://quiet-peak-00993.herokuapp.com/posts"
-	);
-	const arrayOfPages = await getArrayOfPages.json();
+	const api_url =
+		process.env.DEVELOPMENT_API_URL || process.env.PRODUCTION_API_URL;
+	let posts;
+	let arrayOfPages;
+	const res = await fetch(`${api_url}/posts/${params.id}`);
+
+	if (res !== 503) {
+		posts = await res.json();
+	} else {
+		posts = null;
+	}
+
+	console.log("POSTS", posts);
+
+	const getArrayOfPages = await fetch(`${api_url}/posts`);
+
+	if (getArrayOfPages !== 503) {
+		arrayOfPages = await getArrayOfPages.json();
+	} else {
+		arrayOfPages = null;
+	}
 
 	return { props: { posts, arrayOfPages } };
 }
 
-export default PostPage;
+export default PostsPage;

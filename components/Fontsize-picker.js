@@ -8,11 +8,11 @@ import styled from "styled-components";
 const FontsizePicker = (props) => {
 	const [fontSizes, setFontSizes] = useState([]);
 
-	useEffect(() => {
+	/*useEffect(() => {
 		fontSizeStyle.map((fontsize) => {
 			setFontSizes(fontSizes.push(fontsize.label.replace("pt", "")));
 		});
-	}, []);
+	}, []);*/
 
 	return (
 		<Wrapper>
@@ -34,8 +34,6 @@ const FontsizePicker = (props) => {
 
 const Wrapper = styled.div`
 	margin-left: -463px;
-
-	margin-top: 47px;
 
 	display: flex;
 	justify-content: center;
@@ -67,7 +65,7 @@ const StyledLi = styled.li`
 		padding: 3px;
 		font-size: ${(props) => props.fontSize};
 
-		margin-top: -15px;
+		margin-top: 15px;
 	}
 `;
 /*font-size: ${fontSize.label.replace('pt', 'px')};*/

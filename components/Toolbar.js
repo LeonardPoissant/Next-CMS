@@ -59,8 +59,6 @@ const ToolBar = (props) => {
 
 	const getFocus = () => {
 		props.editor.current && props.editor.current.focus();
-
-		//console.log('FOCUS--', editor.current.focus())
 	};
 
 	const handleOpenFsDropDown = () => {
@@ -71,7 +69,6 @@ const ToolBar = (props) => {
 	};
 
 	const handleOpenColorPicker = () => {
-		console.log("here");
 		if (openFsDropdown) {
 			setOpenFsDropdown(!openFsDropdown);
 		}
@@ -103,6 +100,18 @@ const ToolBar = (props) => {
 					}>
 					<u>U</u>
 				</ChangeStyleButton>
+				<ChangeStyleButton>
+					<div
+						onClick={() => handleOpenFsDropDown()}
+						style={{ fontFamily: "serif" }}>
+						T
+					</div>
+				</ChangeStyleButton>
+				<ColorPickerChoices
+					onClick={() => handleOpenColorPicker()}
+					onChangeColor={iconColor}
+					onChooseColor={color}
+				/>
 				<EmbedButton onMouseDown={() => addLink()}>
 					<InsertLinkIcon
 						style={{
@@ -125,18 +134,6 @@ const ToolBar = (props) => {
 						}}
 					/>
 				</EmbedButton>
-				<ChangeStyleButton>
-					<div
-						onClick={() => handleOpenFsDropDown()}
-						style={{ fontFamily: "serif" }}>
-						T
-					</div>
-				</ChangeStyleButton>
-				<ColorPickerChoices
-					onClick={() => handleOpenColorPicker()}
-					onChangeColor={iconColor}
-					onChooseColor={color}
-				/>
 
 				{promptForURL ? (
 					<AddMediaWindow active={active}>
@@ -245,9 +242,11 @@ const Wrapper = styled.div`
 `;
 
 const ParentWrapper = styled.div`
-	display: flex;
+	position: sticky;
+
 	flex-direction: column;
-	margin-top: 200px;
+
+	//margin-top: 200px;
 `;
 
 const StylesWrapper = styled.div``;

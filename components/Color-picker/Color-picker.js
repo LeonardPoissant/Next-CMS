@@ -11,8 +11,6 @@ const ColorPicker = (props) => {
 	const [isVisible, setIsVisible] = useState(false);
 	const onToggle = props.onToggle;
 
-	console.log("ISVISIBLE", isVisible);
-
 	return (
 		<Wrapper>
 			<PrimaryColorsWrapper>
