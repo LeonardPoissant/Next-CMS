@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import BlogPostBanner from "./Blog-post-banner";
 
-const Posts = (props) => {
-	let posts = props.posts.posts.data;
-
+const Posts = ({ posts }) => {
 	return (
 		<>
 			{posts[0] != undefined ? (
@@ -11,10 +9,10 @@ const Posts = (props) => {
 					<BlogPostBanner
 						key={index}
 						id={post._id}
-						title={post.post.title}
-						description={post.post.description}
-						category={post.post.category}
-						date={post.post.date}
+						title={post.post?.title}
+						description={post.post?.description}
+						category={post.post?.category}
+						date={post.date}
 					/>
 				))
 			) : (

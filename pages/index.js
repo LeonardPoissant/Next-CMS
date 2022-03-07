@@ -8,7 +8,9 @@ import { useLanguageContext } from "../Contexts/LanguageContext";
 
 export default function Home({ metaTags }) {
 	const value = useLanguageContext();
-	const description = metaTags.data[0].description;
+	const description = metaTags
+		? metaTags?.data[0]?.description
+		: "Leonard Poissant";
 
 	return (
 		<>
@@ -68,14 +70,28 @@ export default function Home({ metaTags }) {
 export async function getStaticProps() {
 	// Call an external API endpoint to get posts
 	const res = await fetch("https://quiet-peak-00993.herokuapp.com/meta");
-	const metaTags = await res.json();
+	let metaTags;
+
+	if (res.status !== 503) {
+		metaTags = await res?.json();
+	}
 	// By returning { props: { posts } }, the Blog component
 	// will receive `posts` as a prop at build time
-	return {
-		props: {
-			metaTags,
-		},
-	};
+	const problem = "there was a problem";
+
+	if (metaTags) {
+		return {
+			props: {
+				metaTags,
+			},
+		};
+	} else {
+		return {
+			props: {
+				problem,
+			},
+		};
+	}
 }
 
 const Wrapper = styled.main`

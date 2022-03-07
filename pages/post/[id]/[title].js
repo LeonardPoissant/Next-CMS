@@ -3,16 +3,16 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import SocialShare from "../../../components/Social-share";
 import BreadCrumbs from "../../../components/Bread-crumb";
-import RenderedPost from "../../../components/Editor";
+import TextEditor from "../../../components/Editor";
 
 export async function getServerSideProps(context) {
+	const api_url =
+		process.env.DEVELOPMENT_API_URL || process.env.PRODUCTION_API_URL;
 	const params = context.params;
 	const id = context.params.id;
 	const title = context.params.title;
 
-	const res = await fetch(
-		`https://quiet-peak-00993.herokuapp.com/post/${id}/${title}`
-	);
+	const res = await fetch(`${api_url}/post/${id}/${title}`);
 
 	const post = await res.json();
 
@@ -73,7 +73,9 @@ const Post = (data) => {
 
 			<Wrapper>
 				<BreadCrumbs title={title} />
-				<RenderedPost contentToConvert={contentToConvert}></RenderedPost>
+				<TextEditor
+					contentToConvert={contentToConvert}
+					readOnly={true}></TextEditor>
 			</Wrapper>
 			<SocialShare encodedUrl={url} />
 		</>
