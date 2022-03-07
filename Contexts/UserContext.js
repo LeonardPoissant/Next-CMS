@@ -12,6 +12,7 @@ export function UserContext({ children }) {
 
 	const signIn = (e) => {
 		e.preventDefault();
+		console.log("HALLo", api_url);
 
 		fetch(`${api_url}/login`, {
 			method: "POST",
