@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Posts from "../../components/Posts";
-import BlogNav from "../../components/Blog-pages-nav";
-import BlogDrawer from "../../components/Blog-drawer";
-import { ModalContext } from "../../Contexts/ModalContext";
+import Posts from "../../components/posts";
+import BlogNav from "../../components/blog-pages-nav";
+import BlogDrawer from "../../components/Drawers/blog-drawer";
+import { ModalContext } from "../../Contexts/modal-context";
 
 const PostsPage = (props) => {
 	return (
@@ -62,8 +62,6 @@ export async function getServerSideProps({ params }) {
 	} else {
 		posts = null;
 	}
-
-	console.log("POSTS", posts);
 
 	const getArrayOfPages = await fetch(`${api_url}/posts`);
 

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useLanguageContext } from "../Contexts/LanguageContext";
+import { useLanguageContext } from "../Contexts/language-context";
 
 const Projects = () => {
 	const value = useLanguageContext();

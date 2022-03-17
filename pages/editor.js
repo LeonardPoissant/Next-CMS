@@ -1,10 +1,10 @@
 import TextEditor from "../components/Editor";
-import ToolBar from "../components/Toolbar";
+import ToolBar from "../components/Editor-toolbar/toolbar";
 import styled from "styled-components";
 import draftJsCss from "../utils/EditorUtils/EditorStyles/Editor-css";
-import EditorDrawer from "../components/Editor-drawer";
-import { ModalContext } from "../Contexts/ModalContext";
-import { useEditorContext } from "../Contexts/EditorContext";
+import EditorDrawer from "../components/Drawers/editor-drawer";
+import { ModalContext } from "../Contexts/modal-context";
+import { useEditorContext } from "../Contexts/editor-context";
 
 const EditorPage = () => {
 	const {

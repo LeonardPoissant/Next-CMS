@@ -6,10 +6,27 @@ const draftJsCss = `
 
   width:100%;
 }, .public-DraftEditor-content figure iframe{
+  position:sticky;
+  top:60px;
 
-  width: 100%;
+  width:100%;
   
 };
+.public-DraftEditor-content figure{
+  position:sticky;
+  top:60px;
+  
+};
+
+.align-right div {
+  text-align: right;
+}
+.align-center div {
+  text-align: center;
+}
+.align-left div {
+  text-align: left;
+}
 
 
 `;

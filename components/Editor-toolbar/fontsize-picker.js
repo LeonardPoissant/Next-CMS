@@ -1,19 +1,8 @@
 // @ts-nocheck
-
-import React, { useEffect, useState } from "react";
-
-import fontSizeStyle from "../utils/EditorUtils/EditorStyles/Inline-styles/Font-sizes";
+import fontSizeStyle from "../../utils/EditorUtils/EditorStyles/Inline-styles/Font-sizes";
 import styled from "styled-components";
 
 const FontsizePicker = (props) => {
-	const [fontSizes, setFontSizes] = useState([]);
-
-	/*useEffect(() => {
-		fontSizeStyle.map((fontsize) => {
-			setFontSizes(fontSizes.push(fontsize.label.replace("pt", "")));
-		});
-	}, []);*/
-
 	return (
 		<Wrapper>
 			<StyledUl>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BlogPostBanner from "./Blog-post-banner";
+import BlogPostBanner from "./blog-post-banner";
 
 const Posts = ({ posts }) => {
 	return (

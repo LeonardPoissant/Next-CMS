@@ -1,11 +1,17 @@
 const customStyleMap = {
 	left: {
+		display: "inline-block",
+		width: "100%",
 		textAlign: "left",
 	},
 	center: {
+		display: "inline-block",
+		width: "100%",
 		textAlign: "center",
 	},
 	right: {
+		display: "inline-block",
+		width: "100%",
 		textAlign: "right",
 	},
 

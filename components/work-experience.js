@@ -1,4 +1,4 @@
-import { useLanguageContext } from "../Contexts/LanguageContext";
+import { useLanguageContext } from "../Contexts/language-context";
 import styled from "styled-components";
 
 const WorkExperienceComponent = (props) => {

@@ -1,16 +1,13 @@
 import Head from "next/head";
 import styled from "styled-components";
-import WorkExperienceComponent from "../components/WorkExperience";
+import WorkExperienceComponent from "../components/work-experience";
 
-import SideTitles from "../components/SideTitles";
-import Projects from "../components/Projects";
-import { useLanguageContext } from "../Contexts/LanguageContext";
+import SideTitles from "../components/side-ancor";
+import Projects from "../components/projects";
+import { useLanguageContext } from "../Contexts/language-context";
 
-export default function Home({ metaTags }) {
+export default function Home() {
 	const value = useLanguageContext();
-	const description = metaTags
-		? metaTags?.data[0]?.description
-		: "Leonard Poissant";
 
 	return (
 		<>
@@ -25,7 +22,10 @@ export default function Home({ metaTags }) {
 				<meta property="og:type" content="website" />
 				<meta property="og:url" content="https://yearngroup.herokuapp.com/" />
 				<meta property="og:title" content="Sharely" />
-				<meta property="og:description" content={description} />
+				<meta
+					property="og:description"
+					content="Sharely, how sharing is meant to be"
+				/>
 				<meta
 					property="og:image"
 					content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png"
@@ -40,7 +40,10 @@ export default function Home({ metaTags }) {
 					content="https://yearngroup.herokuapp.com/"
 				/>
 				<meta property="twitter:title" content="Sharely" />
-				<meta property="twitter:description" content={description} />
+				<meta
+					property="twitter:description"
+					content="Sharely, how sharing is meant to be"
+				/>
 				<meta
 					property="twitter:image"
 					content="https://pantry-meta-images.s3.ca-central-1.amazonaws.com/Screen+Shot+2021-06-21+at+5.03.44+PM.png"></meta>
@@ -65,33 +68,6 @@ export default function Home({ metaTags }) {
 			</Wrapper>
 		</>
 	);
-}
-
-export async function getStaticProps() {
-	// Call an external API endpoint to get posts
-	const res = await fetch("https://quiet-peak-00993.herokuapp.com/meta");
-	let metaTags;
-
-	if (res.status !== 503) {
-		metaTags = await res?.json();
-	}
-	// By returning { props: { posts } }, the Blog component
-	// will receive `posts` as a prop at build time
-	const problem = "there was a problem";
-
-	if (metaTags) {
-		return {
-			props: {
-				metaTags,
-			},
-		};
-	} else {
-		return {
-			props: {
-				problem,
-			},
-		};
-	}
 }
 
 const Wrapper = styled.main`

@@ -1,10 +1,10 @@
 // @ts-nocheck
 import React, { useState } from "react";
-import { primaries } from "../../utils/EditorUtils/EditorStyles/Inline-styles/Color-palette";
+import { primaries } from "../../../utils/EditorUtils/EditorStyles/Inline-styles/Color-palette";
 import styled from "styled-components";
-import SecondaryPicker from "./Color-picker-choices";
-import { useEditorContext } from "../../Contexts/EditorContext";
-import Animation from "./Animation";
+import SecondaryPicker from "./color-picker-choices";
+import { useEditorContext } from "../../../Contexts/editor-context";
+import Animation from "./animation";
 
 const ColorPicker = (props) => {
 	const { selectedIndex, handleChoosePrimaryColor } = useEditorContext();

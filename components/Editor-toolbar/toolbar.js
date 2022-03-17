@@ -7,15 +7,16 @@ import CloseIcon from "@mui/icons-material/Close";
 import Alert from "@mui/material/Alert";
 //import IconButton from "@mui/icons-material/IconButton";
 import Collapse from "@mui/material/Collapse";
-import FontsizePicker from "./Fontsize-picker";
+import FontsizePicker from "./fontsize-picker";
+import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
 
 import ColorPicker from "./Color-picker/Color-picker";
 
-import ColorPickerChoices from "../components/Color-picker/Color-picker-selected-choices";
+import ColorPickerChoices from "./Color-picker/Color-picker-selected-choices";
 
 import styled from "styled-components";
 
-import { useEditorContext } from "../Contexts/EditorContext";
+import { useEditorContext } from "../../Contexts/editor-context";
 
 const ToolBar = (props) => {
 	const {
@@ -46,7 +47,9 @@ const ToolBar = (props) => {
 		setOpenColorPicker,
 		color,
 		iconColor,
+
 		toggleTextAlignement,
+		textAlignment,
 	} = useEditorContext();
 
 	const videoRef = useRef();
@@ -84,6 +87,13 @@ const ToolBar = (props) => {
 						isBold ? { backgroundColor: "grey" } : { backgroundColor: "" }
 					}>
 					<b>B</b>
+				</ChangeStyleButton>
+				<ChangeStyleButton
+					onMouseDown={(e) => toggleTextAlignement(e, "center")}>
+					<FormatAlignCenterIcon />
+				</ChangeStyleButton>
+				<ChangeStyleButton onMouseDown={(e) => toggleTextAlignement(e, "left")}>
+					<b>LEFT</b>
 				</ChangeStyleButton>
 				<ChangeStyleButton
 					onMouseDown={(e) => toggleItalic(e)}

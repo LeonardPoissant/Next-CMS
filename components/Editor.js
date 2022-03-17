@@ -20,7 +20,7 @@ import {
 	Modifier,
 } from "draft-js";
 
-import { useEditorContext } from "../Contexts/EditorContext";
+import { useEditorContext } from "../Contexts/editor-context";
 
 const TextEditor = (props) => {
 	const {
@@ -61,6 +61,17 @@ const TextEditor = (props) => {
 	const getFocus = () => {
 		//editor?.current && editor?.current?.focus();
 	};
+	const getBlockStyle = (block) => {
+		console.log("bloc", block.getType());
+		switch (block.getType()) {
+			case "left":
+				return "align-left";
+			case "center":
+				return "align-center";
+			default:
+				return null;
+		}
+	};
 
 	return (
 		<>
@@ -72,6 +83,7 @@ const TextEditor = (props) => {
 					blockRendererFn={mediaBlockRender}
 					customStyleMap={customStyleMap}
 					editorState={editorState}
+					blockStyleFn={getBlockStyle}
 					onChange={onChange}
 					handleKeyCommand={handleKeyCommand}
 					decorators={decorator}

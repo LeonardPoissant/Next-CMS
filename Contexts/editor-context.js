@@ -37,12 +37,11 @@ export function EditorContext({ children }) {
 	});
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const [iconColor, setIconColor] = useState("");
-	const [animateColor, setAnimateColor] = useState(false);
+
 	const [loading, setIsLoading] = useState(false);
-	const [isFontSize, setIsFontSize] = useState(false);
+
 	const [active, setActive] = useState(false);
-	const [okToDisplay, setOkToDisplay] = useState(false);
-	const [clear, setClear] = useState(false);
+
 	const [, setCurrentStyle] = useState({});
 	const [promptForLink, setPromptForLink] = useState(false);
 	const [warning, setWarning] = useState(false);
@@ -50,214 +49,15 @@ export function EditorContext({ children }) {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [category, setCategory] = useState("");
-	//const [date, setDate] = useState("")
-	const [pageNumber, setPageNumber] = useState(1);
-	//const [fontSizes, setFontSizes] = useState([fontSizeStyle]);
-	const [currentColor, setCurrentColor] = useState("");
-	//const [, setCustomStyleMap] = useState(customStyleMap);
 
-	const [page, setPage] = useState(1);
-	const [focusEditor, setFocusEditor] = useState(false);
-
-	const [test, setTest] = useState(false);
 	const [openFsDropdown, setOpenFsDropdown] = useState(false);
 
 	const [openColorPicker, setOpenColorPicker] = useState(false);
 	const [keywords, setKeywords] = useState("");
+	const [textAlignment, setTextAlignment] = useState("");
 	const router = useRouter();
 
-	const handleChoosePrimaryColor = (i) => {
-		setSelectedIndex(i);
-	};
-
-	const handleChangeComplete = (colors, e) => {
-		e.preventDefault();
-		setColor({ background: colors.hex });
-		//Object.assign(customStyleMap, { color_test: { color: colors.hex } })
-
-		const selection = editorState.getSelection();
-
-		// Let's just allow one color at a time. Turn off all active colors.
-		/*const nextContentState = Object.keys(customStyleMap)
-          .reduce((contentState, color) => {
-    
-            return Modifier.removeInlineStyle(contentState, selection, color)
-          }, editorState.getCurrentContent());
-    
-    
-        let nextEditorState = EditorState.push(
-          editorState,
-          nextContentState,
-          'change-inline-style'
-        );
-    
-        const currentStyle = editorState.getCurrentInlineStyle();
-    
-        // Unset style override for current color.
-        if (!selection.isCollapsed()) {
-      
-          nextEditorState = currentStyle.reduce((state, color) => {
-            console.log('COLRO', color)
-            return RichUtils.toggleInlineStyle(state, color);
-          }, nextEditorState);
-        };
-    
-        // If the color is being toggled on, apply it.
-        if (currentStyle.has(colors.hex)) {
-          console.log('HAS?', colors.hex)
-          nextEditorState = RichUtils.toggleInlineStyle(
-            nextEditorState,
-            { color_test: colors.hex }
-          );
-        }*/
-
-		const newState = RichUtils.toggleInlineStyle(editorState, colors.hex);
-
-		setEditorState(newState);
-	};
-
-	const link = (props) => {
-		const { url } = props.contentState.getEntity(props.entityKey).getData();
-		return <a href={url}>{props.children}</a>;
-	};
-
-	const findLinkEntities = (contentBlock, callback, contentState) => {
-		contentBlock.findEntityRanges((character) => {
-			const entityKey = character.getEntity();
-			return (
-				entityKey !== null &&
-				contentState.getEntity(entityKey).getType() === "LINK"
-			);
-		}, callback);
-	};
-
-	const decorator = new CompositeDecorator([
-		{
-			strategy: findLinkEntities,
-			component: link,
-		},
-	]);
-
-	// Create the Editor whith either already input content (On page change or refresh we rerender with that) or no content stored in the localStorage.
-
-	/*useEffect(() => {
-		const content = sessionStorage.getItem("content");
-		if (content) {
-			const convertedContent = convertFromRaw(JSON.parse(content));
-			setOkToDisplay(true);
-			setEditorState(
-				EditorState.createWithContent(convertedContent, decorator)
-			);
-		} else if (content === null) {
-			setOkToDisplay(true);
-			setEditorState(EditorState.createEmpty(decorator));
-		}
-	}, []);*/
-
-	// store on sessionStorage
-
-	const saveContent = (content) => {
-		window.sessionStorage.setItem(
-			"content",
-			JSON.stringify(convertToRaw(content))
-		);
-	};
-	const clearLocalStorage = () => {
-		setClear(!clear);
-		sessionStorage.clear();
-		setEditorState(EditorState.createEmpty(decorator));
-	};
-
-	const postArticle = (e) => {
-		//e.stopPropagation();
-		e.preventDefault();
-		setIsLoading(!loading);
-
-		let contentState = editorState.getCurrentContent();
-		let convertedContent = convertToRaw(contentState);
-
-		fetch(`${api_url}/create-post`, {
-			method: "POST",
-			headers: authHeader(),
-			body: JSON.stringify({
-				title,
-				description,
-				category,
-				convertedContent,
-			}),
-		})
-			.then((res) => {
-				console.log("res", res);
-				return res.json();
-			})
-			.then((db) => {
-				console.log("promises resolved", db);
-				setIsLoading(false);
-				router.push("/posts/1");
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
-
-	//OnChange, content is stored on the sessionStorage, editorState is updated.
-	const onChange = (editorState) => {
-		const contentState = editorState.getCurrentContent();
-		const inlineStyle = editorState.getCurrentInlineStyle();
-		const isBold = inlineStyle.has("BOLD");
-		const isItalic = inlineStyle.has("ITALIC");
-		const isUnderline = inlineStyle.has("UNDERLINE");
-
-		//const isColorStyle = inlineStyle.has(colorStyle)
-
-		//console.log('CONTENTSTATE', editorState)
-
-		const selection = editorState.getSelection();
-		/*const test = Object.keys(customStyleMap).reduce((contentState, color) => {
-
-      return inlineStyle.has(color)
-
-    })*/
-		const colors = Object.values(customStyleMap);
-		const getColors = colors.map((styles) => {
-			if (inlineStyle.has(styles.color)) {
-				return styles.color;
-			}
-		});
-
-		getColors.map((color) => {
-			if (color != undefined) {
-				setIconColor(color);
-			}
-		});
-
-		/*if (inlineStyle._map._map._root != undefined) {
-      let arrayOfStyles = inlineStyle._map._map._root.entries
-
-      arrayOfStyles.map(style => {
-        if (style[0].charAt(0) === "#") {
-          setIconColor(style[0])
-        }
-      })
-    }*/
-
-		saveContent(contentState);
-		setEditorState(editorState);
-		setCurrentStyle(inlineStyle);
-		setIsBold(isBold);
-		setIsItalic(isItalic);
-		setIsUnderline(isUnderline);
-	};
-
-	const handleKeyCommand = (command, editorState) => {
-		const newState = RichUtils.handleKeyCommand(editorState, command);
-		if (newState) {
-			onChange(newState);
-
-			return "handled";
-		}
-		return "not-handled";
-	};
+	//---------------STYLE FUNCTIONS
 
 	const toggleFontsize = (e, fontSize) => {
 		e.preventDefault();
@@ -294,7 +94,7 @@ export function EditorContext({ children }) {
 		setOpenFsDropdown(!openFsDropdown);
 	};
 
-	const toggleTextColor = async (e, colorStyle) => {
+	const toggleTextColor = (e, colorStyle) => {
 		e.preventDefault();
 
 		let max_array_length = 3;
@@ -305,6 +105,7 @@ export function EditorContext({ children }) {
 			color.pop();
 			color.unshift(colorStyle);
 		}
+		setColor({ background: colorStyle });
 
 		const selection = editorState.getSelection();
 
@@ -339,49 +140,27 @@ export function EditorContext({ children }) {
 			);
 		}
 
-		//onChange(RichUtils.toggleInlineStyle(editorState, colorStyle))
-		onChange(nextEditorState);
+		onChange(RichUtils.toggleInlineStyle(editorState, colorStyle));
 		setOpenColorPicker(!openColorPicker);
 	};
 
-	const toggleTextAlignement = (e, textAlignement) => {
+	const toggleTextAlignement = (e, alignmentType) => {
 		e.preventDefault();
-
 		const selection = editorState.getSelection();
+		const anchorKey = selection.getAnchorKey();
+		const currentContent = editorState.getCurrentContent();
+		const currentContentBlock = currentContent.getBlockForKey(anchorKey);
+		const blockType = currentContentBlock.getType();
 
-		// Let's just allow one color at a time. Turn off all active colors.
-		/*const nextContentState = Object.keys(customStyleMap)
-          .reduce((contentState, color) => {
-            return Modifier.removeInlineStyle(contentState, selection, color)
-          }, editorState.getCurrentContent());*/
+		onChange(RichUtils.toggleBlockType(editorState, alignmentType));
 
-		const nextContentState = editorState.getCurrentContent();
-
-		let nextEditorState = EditorState.push(
-			editorState,
-			nextContentState,
-			"change-inline-style"
+		console.log(
+			"editorsatet",
+			editorState
+				.getCurrentContent()
+				.getBlockForKey(selection.getStartKey())
+				.getType()
 		);
-
-		const currentStyle = editorState.getCurrentInlineStyle();
-
-		// Unset style override for current color.
-		if (selection.isCollapsed()) {
-			nextEditorState = currentStyle.reduce((state, textAlignement) => {
-				return RichUtils.toggleInlineStyle(state, textAlignement);
-			}, nextEditorState);
-		}
-
-		// If the color is being toggled on, apply it.
-		if (!currentStyle.has(textAlignement)) {
-			nextEditorState = RichUtils.toggleInlineStyle(
-				nextEditorState,
-				textAlignement
-			);
-		}
-
-		onChange(RichUtils.toggleInlineStyle(editorState, "center"));
-		//onChange(nextEditorState);
 	};
 
 	const toggleBold = (e) => {
@@ -525,6 +304,8 @@ export function EditorContext({ children }) {
 				{ currentContent: contentStateWithEntity },
 				"create-entity"
 			);
+
+			console.log("new", newEditorState.getCurrentInlineStyle());
 			setEditorState(
 				AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, "  ")
 			);
@@ -557,22 +338,134 @@ export function EditorContext({ children }) {
 		setActive(!active);
 	};
 
+	const handleChoosePrimaryColor = (i) => {
+		setSelectedIndex(i);
+	};
+
+	const link = (props) => {
+		const { url } = props.contentState.getEntity(props.entityKey).getData();
+		return <a href={url}>{props.children}</a>;
+	};
+
+	const findLinkEntities = (contentBlock, callback, contentState) => {
+		contentBlock.findEntityRanges((character) => {
+			const entityKey = character.getEntity();
+			return (
+				entityKey !== null &&
+				contentState.getEntity(entityKey).getType() === "LINK"
+			);
+		}, callback);
+	};
+
+	const decorator = new CompositeDecorator([
+		{
+			strategy: findLinkEntities,
+			component: link,
+		},
+	]);
+
+	//---------------STYLE FUNCTIONS END
+
+	//---------------EDITOR FUNCTIONS
+
+	const onChange = (editorState) => {
+		const contentState = editorState.getCurrentContent();
+		const inlineStyle = editorState.getCurrentInlineStyle();
+		const isBold = inlineStyle.has("BOLD");
+		const isItalic = inlineStyle.has("ITALIC");
+		const isUnderline = inlineStyle.has("UNDERLINE");
+
+		const colors = Object.values(customStyleMap);
+		const getColors = colors.map((styles) => {
+			if (inlineStyle.has(styles.color)) {
+				return styles.color;
+			}
+		});
+
+		getColors.map((color) => {
+			if (color != undefined) {
+				setIconColor(color);
+			}
+		});
+
+		setEditorState(editorState);
+		setCurrentStyle(inlineStyle);
+		setIsBold(isBold);
+		setIsItalic(isItalic);
+		setIsUnderline(isUnderline);
+	};
+
+	const handleKeyCommand = (command, editorState) => {
+		const newState = RichUtils.handleKeyCommand(editorState, command);
+		if (newState) {
+			onChange(newState);
+
+			return "handled";
+		}
+		return "not-handled";
+	};
+
+	//---------------EDITOR FUNCTIONS END
+
+	const postArticle = (e) => {
+		//e.stopPropagation();
+		e.preventDefault();
+		setIsLoading(!loading);
+
+		let contentState = editorState.getCurrentContent();
+		let convertedContent = convertToRaw(contentState);
+
+		fetch(`${api_url}/create-post`, {
+			method: "POST",
+			headers: authHeader(),
+			body: JSON.stringify({
+				title,
+				description,
+				category,
+				convertedContent,
+			}),
+		})
+			.then((res) => res.json())
+			.then((db) => {
+				console.log("promises resolved", db);
+				setIsLoading(false);
+				router.push("/posts/1");
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<AppContext.Provider
 			value={{
 				editorState,
 				setEditorState,
-				saveContent,
 				onChange,
-				clearLocalStorage,
 				handleKeyCommand,
-				okToDisplay,
+				decorator,
+				loading,
+
 				isBold,
 				isItalic,
 				isUnderline,
 				toggleBold,
 				toggleItalic,
 				toggleUnderLine,
+				toggleFontsize,
+				toggleTextColor,
+				openFsDropdown,
+				setOpenFsDropdown,
+				openColorPicker,
+				setOpenColorPicker,
+				color,
+				selectedIndex,
+				setSelectedIndex,
+				iconColor,
+				handleChoosePrimaryColor,
+				toggleTextAlignement,
+				textAlignment,
+
 				promptForURL,
 				handleURL,
 				URLValue,
@@ -588,33 +481,17 @@ export function EditorContext({ children }) {
 				link,
 				open,
 				setOpen,
-				postArticle,
+
 				title,
 				setTitle,
 				description,
 				setDescription,
 				category,
 				setCategory,
-
-				toggleFontsize,
-
-				focusEditor,
-				toggleTextColor,
-				handleChangeComplete,
-				openFsDropdown,
-				setOpenFsDropdown,
-				openColorPicker,
-				setOpenColorPicker,
-				color,
-				selectedIndex,
-				setSelectedIndex,
-				iconColor,
-				toggleTextAlignement,
-				handleChoosePrimaryColor,
-				decorator,
-				loading,
 				keywords,
 				setKeywords,
+
+				postArticle,
 			}}>
 			{children}
 		</AppContext.Provider>

@@ -4,17 +4,13 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import LoginIcon from "@mui/icons-material/Login";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
-import LoginModal from "./Login";
-import { ModalContext } from "../Contexts/ModalContext";
-import { useModalContext } from "../Contexts/ModalContext";
+import LoginModal from "../login";
+import { useModalContext } from "../../Contexts/modal-context";
 import styled from "styled-components";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 const BlogDrawer = () => {

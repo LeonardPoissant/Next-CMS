@@ -6,6 +6,11 @@ import { useRouter } from "next/router";
 const BlogPostBanner = (props) => {
 	const [thumbnailCategory, setThumbnailCategory] = useState("");
 	const router = useRouter();
+	const date = new Date(props.date).toLocaleString("fr-Fr", {
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	});
 
 	const codingThumbnail = "/coding.png";
 	const randomThumbnail = "/random.jpg";
@@ -46,7 +51,7 @@ const BlogPostBanner = (props) => {
 						<Description>{props.description}</Description>
 						<SubContainer>
 							<Catgeroy>{props.category}</Catgeroy>
-							<CreatedOn>{props.date}</CreatedOn>
+							<CreatedOn>{date}</CreatedOn>
 						</SubContainer>
 					</DetailsContainer>
 				</Wrapper>

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import BlogDrawer from "../components/Blog-drawer";
-import LoginModal from "../components/Login";
+
+import LoginModal from "../components/login";
 
 const AppContext = createContext();
 

@@ -1,11 +1,10 @@
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
+import NavBar from "../components/Header/nav-bar";
+import Footer from "../components/Footer/footer";
 import GlobalStyles from "../styles/global-styles";
-import { LanguageContext } from "../Contexts/LanguageContext";
-import { RoutingContext } from "../Contexts/RoutingContext";
-import { EditorContext } from "../Contexts/EditorContext";
-import { UserContext } from "../Contexts/UserContext";
-import { ModalContext } from "../Contexts/ModalContext";
+import { LanguageContext } from "../Contexts/language-context";
+import { RoutingContext } from "../Contexts/routing-context";
+import { EditorContext } from "../Contexts/editor-context";
+import { UserContext } from "../Contexts/user-context";
 
 function MyApp({ Component, pageProps }) {
 	return (

@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import React, { useState } from "react";
-import { secondaries } from "../../utils/EditorUtils/EditorStyles/Inline-styles/Color-palette";
+import { secondaries } from "../../../utils/EditorUtils/EditorStyles/Inline-styles/Color-palette";
 import styled from "styled-components";
 
 const SecondaryPicker = (props) => {
